@@ -3,16 +3,18 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import '../style/main.css';
 import axios from "axios";
+import Cookies from 'universal-cookie';
 
 class Index extends React.Component
 {
     constructor(props){
+        const cookies = new Cookies();
         super(props);
         this.state =
         {
           alert:"Welcome to site",
-          user: this.props.location.state.userid,
-          password: this.props.location.state.password,
+          user: cookies.get('userid'),
+          password: cookies.get('password'),
           posts: [{ 'question': 'WHat is OOPs?', 'desciption': 'Descibe it! Please give defination also.' }, { 'question': 'WHat is Java?', 'desciption': 'Descibe it! Please give defination also.' }, { 'question': 'WHat is Java?', 'desciption': 'Descibe it! Please give defination also.' }],
           contributors: [{ 'userid': 'prskid1000', 'exp': '1000' }, { 'userid': 'devil2021', 'exp': '1000' }]
         }
@@ -28,7 +30,7 @@ class Index extends React.Component
             <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon" href="/"></a>
+                  <a className="navbar-brand fa fa-fw fa-home big-icon" href="/index"></a>
                 </li>
               </ul>
               <ul className="navbar-nav mr-auto">
@@ -38,15 +40,15 @@ class Index extends React.Component
               </ul>
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-book big-icon" href="/"></a></center>
+                  <center><a className="navbar-brand fa fa-fw fa-book big-icon" href="/index"></a></center>
                   <p className="h6 text-warning">Posts</p>
                 </li>
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon" href="/"></a></center>
+                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon" href="/index"></a></center>
                   <p className="h6 text-warning">Create</p>
                 </li>
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-user big-icon" href="/"></a></center>
+                  <center><a className="navbar-brand fa fa-fw fa-user big-icon" href="/index"></a></center>
                   <p className="h6 text-warning">{this.state.user}</p>
                 </li>
               </ul>
@@ -68,7 +70,7 @@ class Index extends React.Component
                           <div className="card-body">
                             <h5 className="card-title overflow-auto text-danger">{post.question}</h5>
                             <p className="card-text overflow-auto">{post.desciption}</p>
-                            <a href="#" className="btn btn-dark">Full View</a>
+                            <a href="/index" className="btn btn-dark">Full View</a>
                           </div>
                         </div>
                       </div>
@@ -86,7 +88,7 @@ class Index extends React.Component
                     </span>
                   ))}
               </div>
-              <a href="#" className="btn btn-dark col-10 mt-2 mb-5">View More</a>
+              <a href="/index" className="btn btn-dark col-10 mt-2 mb-5">View More</a>
             </div>
           </div>
         );

@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import '../style/main.css';
 import axios from "axios";
+import Cookies from 'universal-cookie';
 
 class Accounts extends React.Component
 {
@@ -55,13 +56,9 @@ class Accounts extends React.Component
       console.log(res.data.success);
       if(res.data.success === "True")
       {
-        this.props.history.push({
-          pathname: '/index',
-          state: { 
-            userid: this.state.userid, 
-            password: this.state.password
-          }
-        });
+        const cookies = new Cookies();
+        cookies.set('userid', this.state.userid, { path: '/index' });
+        cookies.set('password', this.state.password, { path: '/index' });
         this.props.history.push("/index");
       }
       else
@@ -82,13 +79,9 @@ class Accounts extends React.Component
       .then(res => {
         console.log(res.data.success);
         if (res.data.success === "True") {
-          this.props.history.push({
-            pathname: '/index',
-            state: {
-              userid: this.state.userid,
-              password: this.state.password
-            }
-          });
+          const cookies = new Cookies();
+          cookies.set('userid', this.state.userid, { path: '/index' });
+          cookies.set('password', this.state.password, { path: '/index' });
           this.props.history.push("/index");
         }
         else {
