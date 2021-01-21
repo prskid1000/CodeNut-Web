@@ -1,5 +1,6 @@
 
 exports.isAuth = (req, res, next) => {
+    console.log(req.body);
     var Model = require('../model/user');
     Model.findOne({ password: req.body.password, userid: req.body.userid }, function (err, docs) {
         if (err || !docs) {
@@ -11,6 +12,10 @@ exports.isAuth = (req, res, next) => {
             next();
         }
     });
+};
+
+exports.verify = (req, res, next) => {
+    res.json({ success: 'True'});
 };
 
 exports.addUser = (req, res, next) => {
