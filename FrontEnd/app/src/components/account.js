@@ -61,7 +61,7 @@ class Accounts extends React.Component
       if(res.data.success === "True")
       {
         localStorage.setItem('userid', this.state.userid);
-        localStorage.setItem('password', this.state.userid); 
+        localStorage.setItem('password', this.state.password); 
         this.props.history.push("/index");
       }
       else
@@ -83,7 +83,7 @@ class Accounts extends React.Component
         console.log(res.data.success);
         if (res.data.success === "True") {
           localStorage.setItem('userid', this.state.userid);
-          localStorage.setItem('password', this.state.userid); 
+          localStorage.setItem('password', this.state.password); 
           this.props.history.push("/index");
         }
         else {
@@ -98,7 +98,7 @@ class Accounts extends React.Component
             <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon" onClick={this.Home}></a>
+                  <a className="navbar-brand fa fa-fw fa-home big-icon text-white" onClick={this.Home}></a>
                 </li>
               </ul>
               <ul className="navbar-nav mr-auto">

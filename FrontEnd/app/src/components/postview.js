@@ -31,6 +31,7 @@ class postView extends React.Component
     this.deleteComment = this.deleteComment.bind(this);
     this.editComment = this.editComment.bind(this);
     this.handleComment = this.handleComment.bind(this);
+    this.handleChangeC = this.handleChangeC.bind(this);
     this.upVoteComment = this.upVoteComment.bind(this);
     this.downVoteComment = this.downVoteComment.bind(this);
     this.Home = this.Home.bind(this);
@@ -69,7 +70,7 @@ class postView extends React.Component
 
   upVoteComment(event){
     var id = event.target.id;
-    if (this.state.user == this.state.comments[id].author) {
+    if (this.state.user != this.state.comments[id].author) {
       const data = {
         userid: this.state.user,
         password: this.state.password,
@@ -99,7 +100,7 @@ class postView extends React.Component
 
   downVoteComment(event){
     var id = event.target.id;
-    if (this.state.user == this.state.comments[id].author) {
+    if (this.state.user != this.state.comments[id].author) {
       const data = {
         userid: this.state.user,
         password: this.state.password,
@@ -258,15 +259,16 @@ class postView extends React.Component
           break;
         case "description":
           this.setState({ 'description': event.target.value });
-        case "mycomment":
-          this.setState({ 'mycomment': event.target.value });
-          break;
       }
     }
     else
     {
       this.setState({'alert':'Only Author can edit it'});
     }
+  }
+
+  handleChangeC(event) {
+    this.setState({ 'mycomment': event.target.value });
   }
 
   handleComment(event) {
@@ -414,7 +416,7 @@ class postView extends React.Component
                   <div className="input-group-prepend">
                     <span className="input-group-text text-danger">Comment</span>
                   </div>
-                  <textarea rows="5" className="form-control" className="form-control" name={JSON.stringify(this.state)} value={this.state.mycomment} onChange={this.handleChange} id="mycomment"></textarea>
+                  <textarea rows="5" className="form-control" className="form-control" name={JSON.stringify(this.state)} value={this.state.mycomment} onChange={this.handleChangeC} id="mycomment"></textarea>
                   <div className="input-group col-2 m-3">
                     <Button className="btn btn-danger" onClick={this.addComment} id="Add Comment">Add Comment</Button>
                   </div>

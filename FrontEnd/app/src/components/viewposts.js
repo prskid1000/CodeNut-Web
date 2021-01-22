@@ -74,7 +74,7 @@ class viewPosts extends React.Component
             <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon" onClick={this.Home}></a>
+                  <a className="navbar-brand fa fa-fw fa-home big-icon text-white" onClick={this.Home}></a>
                   <p className="h6 text-warning">Home</p>
                 </li>
                 <li className="nav-item">
