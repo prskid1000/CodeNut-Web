@@ -3,18 +3,16 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import '../style/main.css';
 import axios from "axios";
-import Cookies from 'universal-cookie';
 
 class postView extends React.Component
 {
     constructor(props){
-        const cookies = new Cookies();
         super(props);
         this.state =
         {
           alert:"Welcome to site",
-          user: cookies.get('userid'),
-          password: cookies.get('password'),
+          user: localStorage.getItem('userid'),
+          password: localStorage.getItem('password'),
           old_question:"",
           question: "",
           description: "",
@@ -35,6 +33,7 @@ class postView extends React.Component
     this.handleComment = this.handleComment.bind(this);
     this.upVoteComment = this.upVoteComment.bind(this);
     this.downVoteComment = this.downVoteComment.bind(this);
+    this.Home = this.Home.bind(this);
   }
 
   deleteComment(event){
@@ -312,11 +311,14 @@ class postView extends React.Component
     this.props.history.push("/createpost");
   }
 
+  Home(event) {
+    this.props.history.push("/index");
+  }
+
   componentDidMount() {
 
-    const cookies = new Cookies();
-    this.setState({ 'user': cookies.get('userid') });
-    this.setState({ 'password': cookies.get('password') });
+    this.setState({ 'user': localStorage.getItem('userid') });
+    this.setState({ 'password': localStorage.getItem('password') });
 
     axios.get("https://codenutb.herokuapp.com/getallpost", {
       "Content-Type": "application/json"
@@ -344,7 +346,7 @@ class postView extends React.Component
             <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon" href="/index"></a>
+                  <a className="navbar-brand fa fa-fw fa-home big-icon" onClick={this.Home}></a>
                   <p className="h6 text-warning">Home</p>
                 </li>
                 <li className="nav-item">
@@ -421,8 +423,8 @@ class postView extends React.Component
                   <center><p className="bg-dark col-6 h3 text-white font-weight-bolder">All Comments!</p></center>
                   <center>
                     {this.state.comments.map((comment, index) => (
-                      <div className="input-group col-10 m-5">
-                        <div className="input-group col-10 m-3">
+                      <div>
+                        <div className="input-group col-10 m-1">
                           <span className="h1 badge badge-warning col-3 m-1">
                             Votes
                         <span className="badge badge-success">
@@ -432,13 +434,15 @@ class postView extends React.Component
                           <span className="h1 badge badge-dark col-1.5 m-1 clickable" onClick={this.upVoteComment} id={index}>Up Vote</span>
                           <span className="h1 badge badge-dark col-1.5 m-1 clickable" onClick={this.downVoteComment} id={index}>Down Vote</span>
                         </div>
-                        <div className="input-group-prepend">
-                          <span className="input-group-text text-danger">{comment.author}</span>
-                        </div>
-                        <textarea rows="5" className="form-control" className="form-control" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index}></textarea>
-                        <div className="input-group col-2 m-3">
-                          <Button className="btn btn-success m-1" onClick={this.deleteComment} id={index}>Delete Comment</Button>
-                          <Button className="btn btn-success m-1 pl-4 pr-3" onClick={this.editComment} id={index}>Edit Comment</Button>
+                        <div className="input-group col-10 mb-5">
+                          <div className="input-group-prepend">
+                            <span className="input-group-text text-danger">{comment.author}</span>
+                          </div>
+                          <textarea rows="2" className="form-control" className="form-control" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index}></textarea>
+                          <div className="input-group col-2 m-3">
+                            <Button className="btn btn-success m-1" onClick={this.deleteComment} id={index}>Delete Comment</Button>
+                            <Button className="btn btn-success m-1 pl-4 pr-3" onClick={this.editComment} id={index}>Edit Comment</Button>
+                          </div>
                         </div>
                       </div>
                     ))}

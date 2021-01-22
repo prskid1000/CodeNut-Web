@@ -3,23 +3,22 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import '../style/main.css';
 import axios from "axios";
-import Cookies from 'universal-cookie';
 
 class viewPosts extends React.Component
 {
     constructor(props){
-        const cookies = new Cookies();
         super(props);
         this.state =
         {
           alert:"Welcome to site",
-          user: cookies.get('userid'),
-          password: cookies.get('password'),
+          user: localStorage.getItem('userid'),
+          password: localStorage.getItem('password'),
           posts: []
         }
     this.viewPosts = this.viewPosts.bind(this);
     this.createPost = this.createPost.bind(this);
     this.fullView = this.fullView.bind(this);
+      this.Home = this.Home.bind(this);
   }
 
   viewPosts(event) {
@@ -39,11 +38,14 @@ class viewPosts extends React.Component
     this.props.history.push("/postview");
   }
 
+  Home(event) {
+    this.props.history.push("/index");
+  }
+
   componentDidMount() {
 
-    const cookies = new Cookies();
-    this.setState({ 'user': cookies.get('userid') });
-    this.setState({ 'password': cookies.get('password') });
+    this.setState({ 'user': localStorage.getItem('userid') });
+    this.setState({ 'password': localStorage.getItem('password') });
 
     axios.get("https://codenutb.herokuapp.com/getallpost", {
       "Content-Type": "application/json"
@@ -72,7 +74,7 @@ class viewPosts extends React.Component
             <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon" href="/index"></a>
+                  <a className="navbar-brand fa fa-fw fa-home big-icon" onClick={this.Home}></a>
                   <p className="h6 text-warning">Home</p>
                 </li>
                 <li className="nav-item">

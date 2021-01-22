@@ -12,10 +12,10 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Accounts} />
-        <Route path="/index" component={Index} />
-        <Route path="/createpost" component={createPost} />
-        <Route path="/viewposts" component={viewPosts} />
-        <Route path="/postview" component={postView} />
+        <Route exact path="/index" component={Index} />
+        <Route exact path="/createpost" component={createPost} />
+        <Route exact path="/viewposts" component={viewPosts} />
+        <Route exact path="/postview" component={postView} />
       </Switch>
     </Router>
   );

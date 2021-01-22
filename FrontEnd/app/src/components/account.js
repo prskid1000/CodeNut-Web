@@ -3,7 +3,6 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import '../style/main.css';
 import axios from "axios";
-import Cookies from 'universal-cookie';
 
 class Accounts extends React.Component
 {
@@ -19,7 +18,12 @@ class Accounts extends React.Component
       this.Login = this.Login.bind(this);
       this.Register = this.Register.bind(this);
       this.checkPassword = this.checkPassword.bind(this);
+      this.Home = this.Home.bind(this);
     }
+
+  Home(event) {
+    this.props.history.push("/");
+  }
 
   handleChange(event){
     switch (event.target.id)
@@ -56,9 +60,8 @@ class Accounts extends React.Component
       console.log(res.data.success);
       if(res.data.success === "True")
       {
-        const cookies = new Cookies();
-        cookies.set('userid', this.state.userid, { path: '/index' });
-        cookies.set('password', this.state.password, { path: '/index' });
+        localStorage.setItem('userid', this.state.userid);
+        localStorage.setItem('password', this.state.userid); 
         this.props.history.push("/index");
       }
       else
@@ -79,9 +82,8 @@ class Accounts extends React.Component
       .then(res => {
         console.log(res.data.success);
         if (res.data.success === "True") {
-          const cookies = new Cookies();
-          cookies.set('userid', this.state.userid, { path: '/index' });
-          cookies.set('password', this.state.password, { path: '/index' });
+          localStorage.setItem('userid', this.state.userid);
+          localStorage.setItem('password', this.state.userid); 
           this.props.history.push("/index");
         }
         else {
@@ -96,7 +98,7 @@ class Accounts extends React.Component
             <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon" href="/"></a>
+                  <a className="navbar-brand fa fa-fw fa-home big-icon" onClick={this.Home}></a>
                 </li>
               </ul>
               <ul className="navbar-nav mr-auto">

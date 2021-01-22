@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import '../style/main.css';
 import axios from "axios";
-import Cookies from 'universal-cookie';
+
 
 class Index extends React.Component
 {
@@ -12,8 +12,8 @@ class Index extends React.Component
         this.state =
         {
           alert:"Welcome to site",
-          user: "",
-          password: "",
+          user: localStorage.getItem('userid'),
+          password: localStorage.getItem('password'),
           posts: [],
           contributors: [{ 'userid': 'prskid1000', 'exp': '1000' }, { 'userid': 'devil2021', 'exp': '1000' }]
         }
@@ -21,10 +21,15 @@ class Index extends React.Component
       this.fullView = this.fullView.bind(this);
       this.viewPosts = this.viewPosts.bind(this);
       this.createPost = this.createPost.bind(this);
+      this.Home = this.Home.bind(this);
     }
 
   viewPosts(event){
     this.props.history.push("/viewposts");
+  }
+
+  Home(event) {
+    this.props.history.push("/index");
   }
 
   createPost(event) {
@@ -38,12 +43,13 @@ class Index extends React.Component
       });
       this.props.history.push("/postview");
     }
+  
+  
 
   componentDidMount() {
-    
-    const cookies = new Cookies();
-    this.setState({ 'user': cookies.get('userid') });
-    this.setState({ 'password': cookies.get('password') });
+
+    this.setState({ 'user': localStorage.getItem('userid') });
+    this.setState({ 'password': localStorage.getItem('password') });
 
     axios.get("https://codenutb.herokuapp.com/getallpost",{
       "Content-Type": "application/json"
@@ -93,7 +99,7 @@ class Index extends React.Component
             <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon" href="/index"></a>
+                  <a className="navbar-brand fa fa-fw fa-home big-icon text-white" onClick={this.Home}></a>
                   <p className="h6 text-warning">Home</p>
                 </li>
                 <li className="nav-item">
