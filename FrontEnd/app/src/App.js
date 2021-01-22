@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Index from './components/index.js';
 import Accounts from './components/account.js';
+import createPost from './components/createpost.js';
+import viewPosts from './components/viewposts.js';
+import postView from './components/postview.js';
 
 function App() {
   return (
@@ -10,6 +13,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={Accounts} />
         <Route path="/index" component={Index} />
+        <Route path="/createpost" component={createPost} />
+        <Route path="/viewposts" component={viewPosts} />
+        <Route path="/postview" component={postView} />
       </Switch>
     </Router>
   );

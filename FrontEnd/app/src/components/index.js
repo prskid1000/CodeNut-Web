@@ -15,14 +15,43 @@ class Index extends React.Component
           alert:"Welcome to site",
           user: cookies.get('userid'),
           password: cookies.get('password'),
-          posts: [{ 'question': 'WHat is OOPs?', 'desciption': 'Descibe it! Please give defination also.' }, { 'question': 'WHat is Java?', 'desciption': 'Descibe it! Please give defination also.' }, { 'question': 'WHat is Java?', 'desciption': 'Descibe it! Please give defination also.' }],
+          posts: [{ 'question': 'WHat is OOPs?', 'desciption': 'Descibe it! Please give defination also.', 'author': 'prskid1000' }, { 'question': 'WHat is Java?', 'desciption': 'Descibe it! Please give defination also.', 'author': 'prskid1000' }, { 'question': 'WHat is Java?', 'desciption': 'Descibe it! Please give defination also.', 'author': 'prskid1000'}],
           contributors: [{ 'userid': 'prskid1000', 'exp': '1000' }, { 'userid': 'devil2021', 'exp': '1000' }]
         }
+
+      this.fullView = this.fullView.bind(this);
     }
 
-    handleClick() {
-    this.props.history.push("/index");
+    fullView(event){
+      var post = JSON.parse(event.target.value);
+      this.props.history.push({
+        pathname: '/postview',
+        state: { question: post.question, author: post.author}
+      });
+      this.props.history.push("/postview");
+    }
+
+  componentWillMount() {
+    axios.get("http://localhost:8060/getallpost",{
+      "Content-Type": "application/json"
+    })
+      .then(res => {
+        
+        if (res.data.success === "True") {
+          for (var i in res.data.data) {
+            console.log(res.data.data[i]);
+            posts.push({ question: res.data.data[i].question,
+              desciption: res.data.data[i].description,
+              author: res.data.data[i].author
+            })
+          }
+        }
+        else {
+          this.setState({ 'alert': "Error in Communication" });
+        }
+      });
   }
+
 
     render() {
         return (
@@ -40,11 +69,11 @@ class Index extends React.Component
               </ul>
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-book big-icon" href="/index"></a></center>
+                  <center><a className="navbar-brand fa fa-fw fa-book big-icon" href="/viewposts"></a></center>
                   <p className="h6 text-warning">Posts</p>
                 </li>
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon" href="/index"></a></center>
+                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon" href="/createpost"></a></center>
                   <p className="h6 text-warning">Create</p>
                 </li>
                 <li className="nav-item">
@@ -70,7 +99,7 @@ class Index extends React.Component
                           <div className="card-body">
                             <h5 className="card-title overflow-auto text-danger">{post.question}</h5>
                             <p className="card-text overflow-auto">{post.desciption}</p>
-                            <a href="/index" className="btn btn-dark">Full View</a>
+                            <center><Button className="btn btn-danger col-6" value={JSON.stringify(post)} onClick={this.fullView} id="Full View">Full View</Button></center>
                           </div>
                         </div>
                       </div>
@@ -88,7 +117,7 @@ class Index extends React.Component
                     </span>
                   ))}
               </div>
-              <a href="/index" className="btn btn-dark col-10 mt-2 mb-5">View More</a>
+              <a href="/viewposts" className="btn btn-dark col-10 mt-2 mb-5">View More</a>
             </div>
           </div>
         );
