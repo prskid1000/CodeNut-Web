@@ -140,10 +140,16 @@ class Index extends React.Component
                 <center>
                     {this.state.posts.map((post, index) => (
                       <div className="row col-11 mt-2 pb-3" id={index}>
-                        <span className="h5 badge badge-danger" id={index}>
+                        <span className="h5 badge badge-danger mr-1 p-1" id={index}>
                           Votes
                         <span className="badge badge-success">
                             {post.votes}
+                          </span>
+                        </span>
+                        <span className="h5 badge badge-danger mr-1 p-1" id={index}>
+                          Author
+                        <span className="badge badge-success">
+                            {post.author}
                           </span>
                         </span>
                         <div className="card col-12">

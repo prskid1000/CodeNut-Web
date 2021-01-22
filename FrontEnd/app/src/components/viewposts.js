@@ -31,10 +31,8 @@ class viewPosts extends React.Component
 
   fullView(event) {
     var post = JSON.parse(event.target.value);
-    this.props.history.push({
-      pathname: '/postview',
-      state: { question: post.question, author: post.author }
-    });
+    localStorage.setItem('author', post.author);
+    localStorage.setItem('question', post.question);
     this.props.history.push("/postview");
   }
 
@@ -125,7 +123,7 @@ class viewPosts extends React.Component
                         <div className="card-body">
                           <h5 className="card-title overflow-auto text-danger">{post.question}</h5>
                           <p className="card-text overflow-auto">{post.desciption}</p>
-                          <center><Button className="btn btn-danger col-6" value={JSON.stringify(post)} onClick={this.fullView} id="Full View">Full View</Button>
+                          <center><Button className="btn btn-danger col-6" value={JSON.stringify(post)} onClick={this.fullView} id={index}>Full View</Button>
                           </center>
                         </div>
                       </div>

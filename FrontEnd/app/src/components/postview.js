@@ -13,8 +13,9 @@ class postView extends React.Component
           alert:"Welcome to site",
           user: localStorage.getItem('userid'),
           password: localStorage.getItem('password'),
-          old_question:"",
-          question: "",
+          old_question: localStorage.getItem('question'),
+          question: localStorage.getItem('question'),
+          author: localStorage.getItem('author'),
           description: "",
           votes: "",
           comments: [],
@@ -328,13 +329,24 @@ class postView extends React.Component
       .then(res => {
 
         if (res.data.success === "True") {
+
+          for (var i in res.data.data)
+          {
+            if(res.data.data[i].question == this.state.question)
+            {
+              if (res.data.data[i].author == this.state.author)
+              {
+                this.setState({ 'question': res.data.data[i].question });
+                this.setState({ 'description': res.data.data[i].description, });
+                this.setState({ 'author': res.data.data[i].author });
+                this.setState({ 'votes': res.data.data[i].votes });
+                this.setState({ 'comments': res.data.data[i].comments });
+                this.setState({ 'old_question': res.data.data[i].question });
+                break;
+              }
+            }
+          }
          
-          this.setState({ 'question': res.data.data[0].question});
-          this.setState({ 'description': res.data.data[0].description, });
-          this.setState({ 'author': res.data.data[0].author });
-          this.setState({ 'votes': res.data.data[0].votes });
-          this.setState({ 'comments': res.data.data[0].comments });
-          this.setState({ 'old_question': res.data.data[0].question });
           }
         else {
           this.setState({ 'alert': "Error in Communication" });
@@ -392,6 +404,12 @@ class postView extends React.Component
                       {this.state.votes}
                     </span>
                   </span>
+                  <span className="h1 badge badge-warning col-3 m-1">
+                    Author
+                        <span className="badge badge-success">
+                      {this.state.author}
+                      </span>
+                  </span>
                   <span className="h1 badge badge-danger col-1 m-1 clickable" onClick={this.upVotePost}>Up Vote</span>
                   <span className="h1 badge badge-danger col-1.5 m-1 clickable" onClick={this.downVotePost}>Down Vote</span>
                 </div>
@@ -429,7 +447,7 @@ class postView extends React.Component
                         <div className="input-group col-10 m-1">
                           <span className="h1 badge badge-warning col-3 m-1">
                             Votes
-                        <span className="badge badge-success">
+                            <span className="badge badge-success">
                               {this.state.comments[index].votes}
                             </span>
                           </span>
