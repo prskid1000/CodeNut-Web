@@ -50,7 +50,7 @@ class Accounts extends React.Component
       userid: this.state.userid,
       password: this.state.password
     }
-    axios.post("http://localhost:8060/isauth",  data , {
+    axios.post("https://codenutb.herokuapp.com/isauth",  data , {
       "Content-Type": "application/json" })
     .then(res => {
       console.log(res.data.success);
@@ -73,7 +73,7 @@ class Accounts extends React.Component
       userid: this.state.userid,
       password: this.state.password
     }
-    axios.post("http://localhost:8060/adduser", data, {
+    axios.post("https://codenutb.herokuapp.com/adduser", data, {
       "Content-Type": "application/json"
     })
       .then(res => {
@@ -106,16 +106,13 @@ class Accounts extends React.Component
               </ul>
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-book big-icon" href="/"></a></center>
-                  <p className="h6 text-warning"></p>
+                  <center><a className="navbar-brand fa fa-fw fa-book big-icon text-white"></a></center>
                 </li>
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon" href="/"></a></center>
-                  <p className="h6 text-warning"></p>
+                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon text-white"></a></center>
                 </li>
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-user big-icon" href="/"></a></center>
-                  <p className="h6 text-warning"></p>
+                  <center><a className="navbar-brand fa fa-fw fa-user big-icon text-white"></a></center>
                 </li>
               </ul>
             </nav>

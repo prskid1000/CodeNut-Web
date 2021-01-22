@@ -45,5 +45,6 @@ app.get('/getalluser', control.allUser);
 app.get('/getallpost', control.allPost);
 
 
-app.listen(8060);
+app.listen(process.env.PORT || 3000,
+    () => console.log("Server is running..."));
 console.log('CodeNut BackEnd');

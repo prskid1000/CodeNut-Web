@@ -1,6 +1,5 @@
 
 exports.isAuth = (req, res, next) => {
-    console.log(req.body);
     var Model = require('../model/user');
     Model.findOne({ password: req.body.password, userid: req.body.userid }, function (err, docs) {
         if (err || !docs) {
@@ -90,7 +89,6 @@ exports.downExp = (req, res, next) => {
 };
 
 exports.createPost = (req, res, next) => {
-    console.log(req.body);
     var Model = require('../model/post');
     var model = new Model({ question: req.body.question, description: req.body.description, author: req.body.author, votes: "0" });
     model.comments.push({ author: req.body.userid, comment: "Initial Read", votes: "0" });

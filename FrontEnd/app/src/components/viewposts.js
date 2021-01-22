@@ -15,10 +15,57 @@ class viewPosts extends React.Component
           alert:"Welcome to site",
           user: cookies.get('userid'),
           password: cookies.get('password'),
-          posts: [{ 'question': 'WHat is OOPs?', 'desciption': 'Descibe it! Please give defination also.' }, { 'question': 'WHat is Java?', 'desciption': 'Descibe it! Please give defination also.' }, { 'question': 'WHat is Java?', 'desciption': 'Descibe it! Please give defination also.' }],
+          posts: []
         }
-    }
+    this.viewPosts = this.viewPosts.bind(this);
+    this.createPost = this.createPost.bind(this);
+    this.fullView = this.fullView.bind(this);
+  }
 
+  viewPosts(event) {
+    this.props.history.push("/viewposts");
+  }
+
+  createPost(event) {
+    this.props.history.push("/createpost");
+  }
+
+  fullView(event) {
+    var post = JSON.parse(event.target.value);
+    this.props.history.push({
+      pathname: '/postview',
+      state: { question: post.question, author: post.author }
+    });
+    this.props.history.push("/postview");
+  }
+
+  componentDidMount() {
+
+    const cookies = new Cookies();
+    this.setState({ 'user': cookies.get('userid') });
+    this.setState({ 'password': cookies.get('password') });
+
+    axios.get("https://codenutb.herokuapp.com/getallpost", {
+      "Content-Type": "application/json"
+    })
+      .then(res => {
+
+        if (res.data.success === "True") {
+          for (var i in res.data.data) {
+            this.state.posts.push({
+              question: res.data.data[i].question,
+              desciption: res.data.data[i].description,
+              author: res.data.data[i].author,
+              votes: res.data.data[i].votes,
+            });
+          }
+          this.setState({ 'posts': this.state.posts });
+        }
+        else {
+          this.setState({ 'alert': "Error in Communication" });
+        }
+      });
+  }
     render() {
         return (
           <div className="container">
@@ -26,6 +73,11 @@ class viewPosts extends React.Component
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <a className="navbar-brand fa fa-fw fa-home big-icon" href="/index"></a>
+                  <p className="h6 text-warning">Home</p>
+                </li>
+                <li className="nav-item">
+                  <center><a className="navbar-brand fa fa-fw fa-sign-out big-icon text-white clickable" href="/"></a></center>
+                  <p className="h6 text-warning">Logout</p>
                 </li>
               </ul>
               <ul className="navbar-nav mr-auto">
@@ -35,15 +87,15 @@ class viewPosts extends React.Component
               </ul>
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-book big-icon" href="/index"></a></center>
+                  <center><a className="navbar-brand fa fa-fw fa-book big-icon text-white clickable" onClick={this.viewPosts}></a></center>
                   <p className="h6 text-warning">Posts</p>
                 </li>
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon" href="/index"></a></center>
+                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon text-white clickable" onClick={this.createPost}></a></center>
                   <p className="h6 text-warning">Create</p>
                 </li>
                 <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-user big-icon" href="/index"></a></center>
+                  <center><a className="navbar-brand fa fa-fw fa-user big-icon text-white"></a></center>
                   <p className="h6 text-warning">{this.state.user}</p>
                 </li>
               </ul>
@@ -55,9 +107,29 @@ class viewPosts extends React.Component
               </button>
             </div>
             <br></br>
-            <div className="row">
-              <div className="col-12">
-               
+            <div className="row pb-3">
+              <div className="col-12 bg-warning pb-3">
+                <center><p className="bg-dark col-6 h3 text-white font-weight-bolder">All Posts!</p></center>
+                <center>
+                  {this.state.posts.map((post, index) => (
+                    <div className="row col-11 mt-2 pb-3" id={index}>
+                      <span className="h5 badge badge-danger" id={index}>
+                        Votes
+                        <span className="badge badge-success">
+                          {post.votes}
+                        </span>
+                      </span>
+                      <div className="card col-12">
+                        <div className="card-body">
+                          <h5 className="card-title overflow-auto text-danger">{post.question}</h5>
+                          <p className="card-text overflow-auto">{post.desciption}</p>
+                          <center><Button className="btn btn-danger col-6" value={JSON.stringify(post)} onClick={this.fullView} id="Full View">Full View</Button>
+                          </center>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </center>
               </div>
             </div>
           </div>
