@@ -17,3 +17,5 @@ curl --data "userid=prskid1000&password=1289&question=who am i?&author=prskid100
 
 curl  http://localhost:8060/getallpost
 curl  http://localhost:8060/getalluser
+
+curl  https://codenutb.herokuapp.com/getallpost

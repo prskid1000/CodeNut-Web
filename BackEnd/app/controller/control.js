@@ -13,6 +13,10 @@ exports.isAuth = (req, res, next) => {
     });
 };
 
+exports.verify = (req, res, next) => {
+    res.json({ success: 'True'});
+};
+
 exports.addUser = (req, res, next) => {
     console.log(req.body);
     var Model = require('../model/user');
@@ -85,7 +89,6 @@ exports.downExp = (req, res, next) => {
 };
 
 exports.createPost = (req, res, next) => {
-    console.log(req.body);
     var Model = require('../model/post');
     var model = new Model({ question: req.body.question, description: req.body.description, author: req.body.author, votes: "0" });
     model.comments.push({ author: req.body.userid, comment: "Initial Read", votes: "0" });

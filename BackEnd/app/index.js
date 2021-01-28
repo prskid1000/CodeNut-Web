@@ -8,15 +8,19 @@ db.on('open', console.error.bind(console, 'MongoDB Connected Succesfully'));
 var express = require('express');
 var app = express();
 
+var cors = require('cors');
+app.use(cors({ origin: true }));
+
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
 const control=require('./controller/control');
 
-app.post('/isauth', control.isAuth);
+app.post('/isauth', control.isAuth, control.verify);
 app.post('/adduser',control.addUser);
 app.post('/deleteuser', control.deleteUser);
 
@@ -41,5 +45,6 @@ app.get('/getalluser', control.allUser);
 app.get('/getallpost', control.allPost);
 
 
-app.listen(8060);
+app.listen(process.env.PORT || 3000,
+    () => console.log("Server is running..."));
 console.log('CodeNut BackEnd');
