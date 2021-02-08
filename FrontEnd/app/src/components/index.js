@@ -15,7 +15,7 @@ class Index extends React.Component
           user: localStorage.getItem('userid'),
           password: localStorage.getItem('password'),
           posts: [],
-          contributors: [{ 'userid': 'prskid1000', 'exp': '1000' }, { 'userid': 'devil2021', 'exp': '1000' }]
+          contributors: []
         }
 
       this.fullView = this.fullView.bind(this);
@@ -37,10 +37,8 @@ class Index extends React.Component
   }
     fullView(event){
       var post = JSON.parse(event.target.value);
-      this.props.history.push({
-        pathname: '/postview',
-        state: { question: post.question, author: post.author}
-      });
+      localStorage.setItem('author', post.author);
+      localStorage.setItem('question', post.question);
       this.props.history.push("/postview");
     }
   

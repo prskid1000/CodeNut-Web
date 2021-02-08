@@ -1,21 +1,9 @@
-curl --data "userid=prskid1000&password=1289" http://localhost:8060/adduser
-curl --data "userid=prskid1000&password=1289" http://localhost:8060/deleteuser
-curl --data "userid=prskid1000&password=1289" http://localhost:8060/upexp
-curl --data "userid=prskid1000&password=1289" http://localhost:8060/downexp
-curl --data "userid=prskid1000&password=1289" http://localhost:8060/isauth
+curl --data "userid=prskid1000&password=1289" http://localhost:3000/adduser
+curl --data "userid=prskid1000&password=1289" http://localhost:3000/deleteuser
+curl --data "userid=prskid1000&password=1289" http://localhost:3000/isauth
+curl --data "userid=prskid1000&boxid=ffgd" http://localhost:3000/setbox
+curl --data "userid=prskid1000&boxid=ffgd" http://localhost:3000/unsetBox
 
-curl --data "userid=prskid1000&password=1289&question=who am i?&description=identity verifictation&author=prskid1000" http://localhost:8060/createpost
-curl --data "userid=prskid1000&password=1289&question=who am i?&description=identity verifictation&author=prskid1000&newquestion=i am new&newdescription=i am new" http://localhost:8060/updatepost
-curl --data "userid=prskid1000&password=1289&question=who am i?&author=prskid1000" http://localhost:8060/deletepost
-curl --data "userid=prskid1000&password=1289&question=who am i?&author=prskid1000" http://localhost:8060/upvoteq
-curl --data "userid=prskid1000&password=1289&question=who am i?&author=prskid1000" http://localhost:8060/downvoteq
-
-curl --data "userid=prskid1000&password=1289&question=who am i?&author=prskid1000&idx=0" http://localhost:8060/downvotec
-curl --data "userid=prskid1000&password=1289&question=who am i?&author=prskid1000&idx=1" http://localhost:8060/upvotec
-curl --data "userid=prskid1000&password=1289&question=who am i?&author=prskid1000&idx=1" http://localhost:8060/deletecomment
-curl --data "userid=prskid1000&password=1289&question=who am i?&author=prskid1000&newcomment=my new comment&idx=1" http://localhost:8060/updatecomment
-
-curl  http://localhost:8060/getallpost
-curl  http://localhost:8060/getalluser
-
-curl  https://codenutb.herokuapp.com/getallpost
+curl --data "userid=prskid1000&boxid=ffgd&message=hi dude" http://localhost:3000/sendbox
+curl --data "boxid=ffgd" http://localhost:3000/getbox
+curl --data "boxid=ffgd" http://localhost:3000/deletebox
