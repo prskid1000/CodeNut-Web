@@ -3,15 +3,15 @@
 ![Last Commit](https://img.shields.io/github/last-commit/prskid1000/Template)
 
 
-![1](https://github.com/prskid1000/CodeNut-Web/blob/master/Preview/1.jpg?raw=true)
+![1](https://github.com/prskid1000/CodeNut-Web/blob/main/Preview/1.png?raw=true)
 
-![2](https://github.com/prskid1000/CodeNut-Web/blob/master/Preview/2.jpg?raw=true)
+![2](https://github.com/prskid1000/CodeNut-Web/blob/main/Preview/2.png?raw=true)
 
-![3](https://github.com/prskid1000/CodeNut-Web/blob/master/Preview/3.jpg?raw=true)
+![3](https://github.com/prskid1000/CodeNut-Web/blob/main/Preview/3.png?raw=true)
 
-![4](https://github.com/prskid1000/CodeNut-Web/blob/master/Preview/4.jpg?raw=true)
+![4](https://github.com/prskid1000/CodeNut-Web/blob/main/Preview/4.png?raw=true)
 
-![5](https://github.com/prskid1000/CodeNut-Web/blob/master/Preview/5.jpg?raw=true)
+![5](https://github.com/prskid1000/CodeNut-Web/blob/main/Preview/5.png?raw=true)
 
 ## Getting started
 
