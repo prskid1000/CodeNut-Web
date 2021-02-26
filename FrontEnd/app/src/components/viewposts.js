@@ -69,69 +69,74 @@ class viewPosts extends React.Component
     render() {
         return (
           <div className="container">
-            <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon text-white" onClick={this.Home}></a>
-                  <p className="h6 text-warning">Home</p>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-sign-out big-icon text-white clickable" href="/"></a></center>
-                  <p className="h6 text-warning">Logout</p>
-                </li>
-              </ul>
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <p className="h1 text-warning font-italic font-weight-bolder">CodeNut</p>
-                </li>
-              </ul>
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-book big-icon text-white clickable" onClick={this.viewPosts}></a></center>
-                  <p className="h6 text-warning">Posts</p>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon text-white clickable" onClick={this.createPost}></a></center>
-                  <p className="h6 text-warning">Create</p>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-user big-icon text-white"></a></center>
-                  <p className="h6 text-warning">{this.state.user}</p>
-                </li>
-              </ul>
+            <nav className="grey darken-4 mb-3">
+              <div className="nav-wrapper m-5 ">
+                <ul className="left ">
+                  <li><a href="#" className="left brand-logo hide-on-small-only">CodeNut-Web</a></li>
+                </ul>
+                <ul className="right">
+                  <li><a href="/index"><i className="material-icons">home</i></a></li>
+                  <li><a href="/viewposts"><i className="material-icons" onClick={this.viewPosts}>book</i></a></li>
+                  <li><a href="/createpost"><i className="material-icons" onClick={this.createPost}>create</i></a></li>
+                  <li><a href="/"><i className="material-icons">logout</i></a></li>
+                </ul>
+              </div>
             </nav>
-            <div className="alert alert-warning alert-dismissible fade show" role="alert">
+
+            <div className="alert white-text grey darken-1 alert-dismissible fade show" role="alert">
               <strong>{this.state.alert}</strong>
               <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <br></br>
-            <div className="row pb-3">
-              <div className="col-12 bg-warning pb-3">
-                <center><p className="bg-dark col-6 h3 text-white font-weight-bolder">All Posts!</p></center>
-                <center>
-                  {this.state.posts.map((post, index) => (
-                    <div className="row col-11 mt-2 pb-3" id={index}>
-                      <span className="h5 badge badge-danger" id={index}>
-                        Votes
-                        <span className="badge badge-success">
-                          {post.votes}
-                        </span>
-                      </span>
-                      <div className="card col-12">
-                        <div className="card-body">
-                          <h5 className="card-title overflow-auto text-danger">{post.question}</h5>
-                          <p className="card-text overflow-auto">{post.desciption}</p>
-                          <center><Button className="btn btn-danger col-6" value={JSON.stringify(post)} onClick={this.fullView} id={index}>Full View</Button>
-                          </center>
+
+            <div className="row">
+              <div className="col-sm p-1">
+                <div class="jumbotron">
+                  <center><h2>Posts</h2></center>
+                  <center>
+                    {this.state.posts.map((post, index) => (
+
+                      <div className="row col-11 mt-2 pb-3" id={index}>
+
+                        <div className="card col-sm-12">
+
+                          <row className="row col">
+                            <span class="col new badge teal darken-4 m-3" data-badge-caption="" id={index}>
+                              {post.author}
+                            </span>
+
+                            <span class="col new badge teal darken-4 m-3" data-badge-caption="" id={index}>
+                              {post.votes}
+                            </span>
+                          </row>
+
+                          <div className="card-body mt-3">
+                            <div class="input-group form-group">
+                              <div class="input-group-prepend">
+                                <span class="material-icons">question_answer</span>
+                              </div>
+                              <input type="text" class="form-control" placeholder={post.question} disabled></input>
+                            </div>
+                            <div class="input-group form-group">
+                              <div class="input-group-prepend">
+                                <span class="material-icons">question_answer</span>
+                              </div>
+                              <input type="password" class="form-control" placeholder={post.desciption} disabled></input>
+                            </div>
+                            <div className="row">
+                              <Button className="btn teal darken-4 col-sm m-1 mr-3" value={JSON.stringify(post)} onClick={this.fullView} id="Full View">Full View</Button>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </center>
+                    ))}
+                  </center>
+                </div>
               </div>
-            </div>
+             </div>
+
           </div>
         );
     }

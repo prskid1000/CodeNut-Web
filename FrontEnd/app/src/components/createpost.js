@@ -75,60 +75,55 @@ class createPost extends React.Component {
   render() {
     return (
       <div className="container">
-        <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <a className="navbar-brand fa fa-fw fa-home big-icon text-white" onClick={this.Home}></a>
-              <p className="h6 text-warning">Home</p>
-            </li>
-            <li className="nav-item">
-              <center><a className="navbar-brand fa fa-fw fa-sign-out big-icon text-white clickable" href="/"></a></center>
-              <p className="h6 text-warning">Logout</p>
-            </li>
-          </ul>
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <p className="h1 text-warning font-italic font-weight-bolder">CodeNut</p>
-            </li>
-          </ul>
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <center><a className="navbar-brand fa fa-fw fa-book big-icon text-white clickable" onClick={this.viewPosts}></a></center>
-              <p className="h6 text-warning">Posts</p>
-            </li>
-            <li className="nav-item">
-              <center><a className="navbar-brand fa fa-fw fa-pencil big-icon text-white clickable" onClick={this.createPost}></a></center>
-              <p className="h6 text-warning">Create</p>
-            </li>
-            <li className="nav-item">
-              <center><a className="navbar-brand fa fa-fw fa-user big-icon text-white" ></a></center>
-              <p className="h6 text-warning">{this.state.user}</p>
-            </li>
-          </ul>
+        <nav className="grey darken-4 mb-3">
+          <div className="nav-wrapper m-5 ">
+            <ul className="left ">
+              <li><a href="#" className="left brand-logo hide-on-small-only">CodeNut-Web</a></li>
+            </ul>
+            <ul className="right">
+              <li><a href="/index"><i className="left material-icons">home</i></a></li>
+              <li><a href="viewposts"><i className="material-icons" onClick={this.viewPosts}>book</i></a></li>
+              <li><a href="/createpost"><i className="material-icons" onClick={this.createPost}>create</i></a></li>
+              <li><a href="/"><i className="material-icons">logout</i></a></li>
+            </ul>
+          </div>
         </nav>
-        <div className="alert alert-warning alert-dismissible fade show" role="alert">
+        
+        <div className="alert white-text grey darken-1 alert-dismissible fade show" role="alert">
           <strong>{this.state.alert}</strong>
           <button type="button" className="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <br></br>
+        
         <div className="row">
-          <div className="col-12 bg-dark">
-            <div className="input-group col-10 m-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text text-danger">Question</span>
+          <div className="col-sm">
+            <div class="jumbotron">
+              <div class="card">
+                <div class="card-header">
+                  <h3>New</h3>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                        <span class="material-icons">question_answer</span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Question" title={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></input>
+                    </div>
+                    <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                        <span class="material-icons">question_answer</span>
+                      </div>
+                      <input type="password" class="form-control" placeholder="Description" title={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></input>
+                    </div>
+                    <div class="row">
+                      <input type="button" value="Create" class="col btn float-right login_btn grey darken-4 white-text" onClick={this.saveChange} id="Create"></input>
+                    </div>
+                  </form>
+                </div>
               </div>
-              <input type="text" className="form-control" title={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></input>
-            </div>
-            <div className="input-group col-10 m-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text text-danger">Desciption</span>
-              </div>
-              <textarea class="form-control" className="form-control" title={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></textarea>
-            </div>
-            <div className="input-group col-10 m-3">
-              <center className="col-12"><Button className="btn btn-danger col-6" onClick={this.saveChange} id="Create">Create</Button></center>
             </div>
           </div>
         </div>
