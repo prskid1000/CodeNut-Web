@@ -94,86 +94,124 @@ class Index extends React.Component
     render() {
         return (
           <div className="container">
-            <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon text-white" onClick={this.Home}></a>
-                  <p className="h6 text-warning">Home</p>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-sign-out big-icon text-white clickable" href="/"></a></center>
-                  <p className="h6 text-warning">Logout</p>
-                </li>
-              </ul>
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <p className="h1 text-warning font-italic font-weight-bolder">CodeNut</p>
-                </li>
-              </ul>
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-book big-icon text-white clickable"  onClick={this.viewPosts}></a></center>
-                  <p className="h6 text-warning">Posts</p>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon text-white clickable" onClick={this.createPost}></a></center>
-                  <p className="h6 text-warning">Create</p>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-user big-icon text-white"></a></center>
-                  <p className="h6 text-warning">{this.state.user}</p>
-                </li>
-              </ul>
+            <nav className="grey darken-4 mb-3">
+              <div className="nav-wrapper m-5 ">
+                <ul className="left ">
+                  <li><a href="#" className="left brand-logo hide-on-small-only">CodeNut-Web</a></li>
+                </ul>
+                <ul className="right">
+                  <li><a href="#"><i className="left material-icons" onClick={this.Home}>home</i></a></li>
+                  <li><a href="#"><i className="material-icons" onClick={this.viewPosts}>book</i></a></li>
+                  <li><a href="#"><i className="material-icons" onClick={this.createPost}>create</i></a></li>
+                  <li><a href="/"><i className="material-icons">logout</i></a></li>
+                </ul>
+              </div>
             </nav>
-            <div className="alert alert-warning alert-dismissible fade show" role="alert">
+            
+            <div className="alert white-text grey darken-1 alert-dismissible fade show" role="alert">
               <strong>{this.state.alert}</strong>
               <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <br></br>
+
             <div className="row">
-              <div className="col-10 bg-warning pb-5">
-                <center><p className="bg-dark col-6 h3 text-white font-weight-bolder">Top Posts!</p></center> 
-                <center>
+
+              <div className="jumbotron col-sm-3 hide-on-med-and-up">
+                <div class="jumbotron">
+                  <center><h2>Users</h2></center>
+                  <center >
+                    {this.state.contributors.map((user, index) => (
+                      <div className="card col">
+                        <div className="row m-1">
+                          <span class="col-8 h5 mt-1 mb-1 ml-1" id={index}>
+                            {user.userid}
+                          </span>
+                          <span class="col-3 new badge teal mt-2 mb-1 darken-4" data-badge-caption="">
+                            <a href="#" class="nostyle" id={user.userid} onClick={this.newChat} >
+                              {user.exp}
+                            </a>
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </center>
+                </div>
+              </div>
+
+              <div className="col-sm-9 p-1">
+                <div class="jumbotron">
+                  <center><h2>Posts</h2></center>
+                  <center>
                     {this.state.posts.map((post, index) => (
+
                       <div className="row col-11 mt-2 pb-3" id={index}>
-                        <span className="h5 badge badge-danger mr-1 p-1" id={index}>
-                          Votes
-                        <span className="badge badge-success">
-                            {post.votes}
-                          </span>
-                        </span>
-                        <span className="h5 badge badge-danger mr-1 p-1" id={index}>
-                          Author
-                        <span className="badge badge-success">
-                            {post.author}
-                          </span>
-                        </span>
-                        <div className="card col-12">
-                          <div className="card-body">
-                            <h5 className="card-title overflow-auto text-danger">{post.question}</h5>
-                            <p className="card-text overflow-auto">{post.desciption}</p>
-                            <center><Button className="btn btn-danger col-6" value={JSON.stringify(post)} onClick={this.fullView} id="Full View">Full View</Button></center>
+
+                        <div className="card col-sm-12">
+
+                          <row className="row col">
+                            <span class="col new badge teal darken-4 m-3" data-badge-caption="" id={index}>
+                              {post.author}
+                            </span>
+
+                            <span class="col new badge teal darken-4 m-3" data-badge-caption="" id={index}>   
+                              {post.votes}
+                            </span>
+                          </row>
+                          
+                          <div className="card-body mt-3">
+                            <div class="input-group form-group">
+                              <div class="input-group-prepend">
+                                <span class="material-icons">question_answer</span>
+                              </div>
+                              <input type="text" class="form-control" placeholder={post.question} disabled></input>
+                            </div>
+                            <div class="input-group form-group">
+                              <div class="input-group-prepend">
+                                <span class="material-icons">question_answer</span>
+                              </div>
+                              <input type="password" class="form-control" placeholder={post.desciption} disabled></input>
+                            </div>
+                            <div className="row">
+                              <Button className="btn teal darken-4 col-sm m-1 mr-3" value={JSON.stringify(post)} onClick={this.fullView} id="Full View">Full View</Button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     ))}
-                </center>
+                  </center>
+                  <center>
+                    <div className="row">
+                      <Button className="btn teal darken-4 col-sm m-1 mr-3" onClick={this.viewPosts} id="View Posts">View More</Button>
+                    </div>
+                  </center>
+                </div>
               </div>
-              <div className="col-2 bg-muted">
-                <center><p className="bg-dark col text-white font-weight-bolder">Top Contributors!</p></center>
-                  {this.state.contributors.map((user, index) => (
-                    <span className="badge badge-danger m-1 p-1" id={index}>
-                      {user.userid}
-                      <span className="badge badge-success p-1">
-                        {user.exp}
-                      </span>
-                    </span>
-                  ))}
-              </div>
-              <center className="col-10 mt-2 mb-5"><Button className="btn btn-dark col-12" onClick={this.viewPosts} id="View Posts">View More</Button></center>
+
+              <div className="jumbotron col-sm-3 hide-on-small-only">
+                <div class="jumbotron p-1">
+                  <center><h2>Users</h2></center>
+                  <center >
+                    {this.state.contributors.map((user, index) => (
+                      <div className="card col">
+                        <div className="row mb-1">
+                          <span class="col-6 h5 mt-2 mb-1" id={index}>
+                            {user.userid}
+                          </span>
+                          <span class="col-1 new badge teal mt-2 mb-1 darken-4" data-badge-caption="">
+                            <a href="#" class="nostyle" id={user.userid} onClick={this.newChat} >
+                              {user.exp}
+                          </a>
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </center>
+                </div>
+              </div>   
             </div>
+
           </div>
         );
     }

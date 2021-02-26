@@ -357,119 +357,154 @@ class postView extends React.Component
     render() {
         return (
           <div className="container">
-            <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon text-white" onClick={this.Home}></a>
-                  <p className="h6 text-warning">Home</p>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-sign-out big-icon text-white clickable" href="/"></a></center>
-                  <p className="h6 text-warning">Logout</p>
-                </li>
-              </ul>
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <p className="h1 text-warning font-italic font-weight-bolder">CodeNut</p>
-                </li>
-              </ul>
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-book big-icon text-white clickable" onClick={this.viewPosts}></a></center>
-                  <p className="h6 text-warning">Posts</p>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon text-white clickable" onClick={this.createPost}></a></center>
-                  <p className="h6 text-warning">Create</p>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-user big-icon text-white" ></a></center>
-                  <p className="h6 text-warning">{this.state.user}</p>
-                </li>
-              </ul>
+            <nav className="grey darken-4 mb-3">
+              <div className="nav-wrapper m-5 ">
+                <ul className="left ">
+                  <li><a href="#" className="left brand-logo hide-on-small-only">CodeNut-Web</a></li>
+                </ul>
+                <ul className="right">
+                  <li><a href="#"><i className="left material-icons" onClick={this.Home}>home</i></a></li>
+                  <li><a href="#"><i className="material-icons" onClick={this.viewPosts}>book</i></a></li>
+                  <li><a href="#"><i className="material-icons" onClick={this.createPost}>create</i></a></li>
+                  <li><a href="/"><i className="material-icons">logout</i></a></li>
+                </ul>
+              </div>
             </nav>
-            <div className="alert alert-warning alert-dismissible fade show" role="alert">
+
+            <div className="alert white-text grey darken-1 alert-dismissible fade show" role="alert">
               <strong>{this.state.alert}</strong>
               <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <br></br>
+
             <div className="row">
-              <div className="col-12 bg-dark p-5">
-                <div className="input-group col-10 m-3">
-                  <span className="h1 badge badge-warning col-3 m-1">
-                    Votes
-                        <span className="badge badge-success">
-                      {this.state.votes}
-                    </span>
-                  </span>
-                  <span className="h1 badge badge-warning col-3 m-1">
-                    Author
-                        <span className="badge badge-success">
-                      {this.state.author}
-                      </span>
-                  </span>
-                  <span className="h1 badge badge-danger col-1 m-1 clickable" onClick={this.upVotePost}>Up Vote</span>
-                  <span className="h1 badge badge-danger col-1.5 m-1 clickable" onClick={this.downVotePost}>Down Vote</span>
-                </div>
-                
-                <div className="input-group col-10 m-3">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text text-danger">Question</span>
-                  </div>
-                    <input type="text" className="form-control" name={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></input>
-                </div>
-                <div className="input-group col-10 m-3">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text text-danger">Desciption</span>
-                  </div>
-                  <textarea rows="10" className="form-control" className="form-control" name={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></textarea>
-                  <div className="input-group col-10 m-3">
-                    <Button className="btn btn-danger m-3" onClick={this.saveChange} id="Save Change">Save Changes</Button>
-                    <Button className="btn btn-danger m-3" onClick={this.deletePost} id="Delete Post">Delete Post</Button>
-                  </div>
-                </div>
-                <div className="input-group col-10 m-3">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text text-danger">Comment</span>
-                  </div>
-                  <textarea rows="5" className="form-control" className="form-control" name={JSON.stringify(this.state)} value={this.state.mycomment} onChange={this.handleChangeC} id="mycomment"></textarea>
-                  <div className="input-group col-2 m-3">
-                    <Button className="btn btn-danger" onClick={this.addComment} id="Add Comment">Add Comment</Button>
-                  </div>
-                </div>
-                <div className="col-10 bg-danger p-1">
-                  <center><p className="bg-dark col-6 h3 text-white font-weight-bolder">All Comments!</p></center>
-                  <center>
-                    {this.state.comments.map((comment, index) => (
-                      <div>
-                        <div className="input-group col-10 m-1">
-                          <span className="h1 badge badge-warning col-3 m-1">
-                            Votes
-                            <span className="badge badge-success">
-                              {this.state.comments[index].votes}
-                            </span>
-                          </span>
-                          <span className="h1 badge badge-dark col-1.5 m-1 clickable" onClick={this.upVoteComment} id={index}>Up Vote</span>
-                          <span className="h1 badge badge-dark col-1.5 m-1 clickable" onClick={this.downVoteComment} id={index}>Down Vote</span>
+              <div className="jumbotron col-sm p-1">
+                <div class="jumbotron">
+                  <div className="row col-11">
+                    <div className="card col-sm-12">
+
+                      <row className="row col hide-on-small-only">
+                        <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
+                          {this.state.author}
+                        </span>
+                        <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
+                          {this.state.votes}
+                        </span>
+                        <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.upVotePost}>Up
+                        </span>
+                        <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.downVotePost}>Down
+                        </span>
+                      </row>
+
+                      <row className="row hide-on-med-and-up">
+                        <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
+                          {this.state.author}
+                        </span>
+                        <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
+                          {this.state.votes}
+                        </span>
+                      </row>
+
+                      <row className="row hide-on-med-and-up">                    
+                        <span class="col new badge grey darken-4 white-text clickable" data-badge-caption="" onClick={this.upVotePost}>Up
+                        </span>
+                        <span class="col new badge grey darken-4 white-text clickable" data-badge-caption="" onClick={this.downVotePost}>Down
+                        </span>
+                      </row>
+
+                      <div className="card-body mt-3">
+                        <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                            <span class="material-icons">question_answer</span>
+                          </div>
+                          <input type="text" class="form-control" name={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></input>
                         </div>
-                        <div className="input-group col-10 mb-5">
-                          <div className="input-group-prepend">
-                            <span className="input-group-text text-danger">{comment.author}</span>
+                        <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                            <span class="material-icons">question_answer</span>
                           </div>
-                          <textarea rows="2" className="form-control" className="form-control" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index}></textarea>
-                          <div className="input-group col-2 m-3">
-                            <Button className="btn btn-success m-1" onClick={this.deleteComment} id={index}>Delete Comment</Button>
-                            <Button className="btn btn-success m-1 pl-4 pr-3" onClick={this.editComment} id={index}>Edit Comment</Button>
-                          </div>
+                          <input type="text" class="form-control" name={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></input>
+                        </div>
+                        <div className="row">
+                          <Button className="btn teal darken-4 col-sm m-1" onClick={this.saveChange} id="Save Change">Save Changes</Button>
+                          <Button className="btn teal darken-4 col-sm m-1" onClick={this.deletePost} id="Delete Post">Delete Post</Button>
                         </div>
                       </div>
-                    ))}
-                  </center>
+
+                      <div className="m-3">
+                        <div className="row">
+                          <textarea class="materialize-textarea col-sm-7 m-1" value="" ></textarea>
+                          <Button className="btn teal darken-4 col-sm-4 m-1" onClick={this.addComment} id="Add Comment">Add Comment</Button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
                 </div>
-              </div> 
+              </div>  
             </div>
+
+            <div className="row">
+              <div className="jumbotron col-sm p-1">
+                <center><h2>All Comments</h2></center>
+                <div class="jumbotron">
+                  <div className="row col-11 pb-3">
+                    {this.state.comments.map((comment, index) => (
+                      <div className="card col-sm-12">
+                        <row className="row col hide-on-small-only">
+                          <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
+                            {this.state.comments[index].author}
+                          </span>
+                          <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
+                            {this.state.comments[index].votes}
+                          </span>
+                          <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.upVoteComment} id={index}>Up
+                        </span>
+                          <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.downVoteComment} id={index}>Down
+                        </span>
+                        </row>
+
+                        <row className="row hide-on-med-and-up">
+                          <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
+                            {this.state.comments[index].author}
+                          </span>
+                          <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
+                            {this.state.comments[index].votes}
+                          </span>
+                        </row>
+
+                        <row className="row hide-on-med-and-up ">
+                          <span class="col new badge grey darken-4 white-text clickable" data-badge-caption="" onClick={this.upVoteComment} id={index}>Up
+                        </span>
+                          <span class="col new badge grey darken-4 white-text clickable" data-badge-caption="" onClick={this.downVoteComment} id={index}>Down
+                        </span>
+                        </row>
+
+
+                        <div class="input-group form-group mt-5">
+                          <div class="input-group-prepend">
+                            <span class="material-icons">question_answer</span>
+                          </div>
+                          <input type="text" class="form-control" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index}></input>
+                        </div>
+
+                        {
+                          this.state.comments[index].author == this.state.user &&
+                          <div className="row">
+                            <Button className="btn teal darken-4 col-sm m-1 mr-3" onClick={this.deleteComment} id={index}>Delete Comment</Button>
+                            <Button className="btn teal darken-4 col-sm m-1 mr-3" onClick={this.editComment} id={index}>Edit Comment</Button>
+                          </div>
+                        }
+                    
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
         );
     }

@@ -92,81 +92,98 @@ class Accounts extends React.Component
       });
   }
 
-    render() {
-        return (
-          <div className="container">
-            <nav className="collapse navbar-collapse navbar navbar-expand-md navbar-dark bg-dark">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <a className="navbar-brand fa fa-fw fa-home big-icon text-white" onClick={this.Home}></a>
-                </li>
-              </ul>
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <p className="h1 text-warning font-italic font-weight-bolder">CodeNut</p>
-                </li>
-              </ul>
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-book big-icon text-white"></a></center>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-pencil big-icon text-white"></a></center>
-                </li>
-                <li className="nav-item">
-                  <center><a className="navbar-brand fa fa-fw fa-user big-icon text-white"></a></center>
-                </li>
-              </ul>
-            </nav>
-            <div className="alert alert-warning alert-dismissible fade show" role="alert">
-              <strong>{this.state.alert}</strong>
-              <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <br></br>
-            
-            <div className="row">
-              <div className="col-md-6">
-                <div className="col-md-12 bg-dark pb-3">
-                  <center><p className="h3 text-warning font-italic font-weight-bolder">Login</p></center>
+  render() {
+    return (
+      <div className="container">
+        <nav className="grey darken-4 mb-3">
+          <div className="nav-wrapper m-5 ">
+            <ul className="left ">
+              <li><a href="#" className="left brand-logo hide-on-small-only">CodeNut-Web</a></li>
+              <li><a href="#" className="left hide-on-med-and-up">CodeNut-Web</a></li>
+            </ul>
+            <ul className="right">
+              <li><a href="/index"><i className="left material-icons">home</i></a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div className="alert white-text grey darken-1 alert-dismissible fade show" role="alert">
+          <strong>{this.state.alert}</strong>
+          <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <br></br>
+
+        <div className="row">
+          <div className="col-sm-6">
+            <div class="jumbotron">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Sign In</h3>
+                </div>
+                <div class="card-body">
                   <form>
-                    <div className="form-group col-8 text-white">
-                      <label htmlFor="userid">Userid</label>
-                      <input type="text" className="form-control" id="userid" placeholder="Userid" onChange={this.handleChange}></input>
+                    <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="userid" id="userid" name="userid" onChange={this.handleChange}></input>
                     </div>
-                    <div className="form-group col-8 text-white">
-                      <label htmlFor="password">Password</label>
-                      <input type="password" className="form-control" id="password" placeholder="Password" onChange={this.handleChange}></input>
+                    <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                      </div>
+                      <input type="password" class="form-control" placeholder="password" id="password" name="password" onChange={this.handleChange}></input>
                     </div>
-                    <center><Button className="btn btn-danger col-6" onClick={this.Login} id="Login">Login</Button></center>
+                    <div class="row">
+                      <input type="button" value="Sign In" class="col btn float-right login_btn grey darken-4 white-text" onClick={this.Login} id="Login"></input>
+                    </div>
                   </form>
-                  </div>
-              </div>
-              <div className="col-md-6">
-                <div className="col-md-12 bg-dark pb-3">
-                  <center><p className="h3 text-warning font-italic font-weight-bolder">Register</p></center>
-                  <form>
-                    <div className="form-group col-8 text-white">
-                      <label htmlFor="userid">Userid</label>
-                      <input type="text" className="form-control" id="userid" placeholder="Userid" onChange={this.handleChange}></input>
-                    </div>
-                    <div className="form-group col-8 text-white">
-                      <label htmlFor="password">Password</label>
-                      <input type="password" className="form-control" id="password" placeholder="Password" onChange={this.handleChange}></input>
-                    </div>
-                    <div className="form-group col-8 text-white">
-                      <label htmlFor="password">Re-Enter Password</label>
-                      <input type="password" className="form-control" id="password" placeholder="Re-Enter Password" onChange={this.checkPassword}></input>
-                    </div>
-                    <center><Button className="btn btn-danger col-6" onClick={this.Register}  id="Register">Register</Button></center>
-                  </form>
-                  </div>
+                </div>
               </div>
             </div>
           </div>
-        );
-    }
+
+          <div className="col-sm-6">
+            <div class="jumbotron">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Sign Up</h3>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="userid" id="userid" name="userid" onChange={this.handleChange}></input>
+                    </div>
+                    <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                      </div>
+                      <input type="password" class="form-control" placeholder="password" id="password" name="password" onChange={this.handleChange}></input>
+                    </div>
+                    <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                      </div>
+                      <input type="password" class="form-control" name="password" id="password" placeholder="Re-Enter Password" onChange={this.checkPassword}></input>
+                    </div>
+                    <div class="row">
+                      <input type="button" value="Sign Up" class="col btn float-right login_btn grey darken-4 white-text" onClick={this.Register} id="Register"></input>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Accounts;

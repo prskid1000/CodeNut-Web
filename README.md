@@ -13,6 +13,8 @@
 
 ![5](https://github.com/prskid1000/CodeNut-Web/blob/main/Preview/5.png?raw=true)
 
+![6](https://github.com/prskid1000/CodeNut-Web/blob/main/Preview/6.png?raw=true)
+
 ## Getting started
 
 - Fork the repository.
