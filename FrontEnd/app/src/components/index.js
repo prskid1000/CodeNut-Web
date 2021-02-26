@@ -125,7 +125,7 @@ class Index extends React.Component
                     {this.state.contributors.map((user, index) => (
                       <div className="card col">
                         <div className="row m-1">
-                          <span class="col-8 h4 mt-1 mb-1 ml-1" id={index}>
+                          <span class="col-8 h5 mt-1 mb-1 ml-1" id={index}>
                             {user.userid}
                           </span>
                           <span class="col-3 new badge teal mt-2 mb-1 darken-4" data-badge-caption="">
@@ -195,11 +195,11 @@ class Index extends React.Component
                   <center >
                     {this.state.contributors.map((user, index) => (
                       <div className="card col">
-                        <div className="row m-1">
-                          <span class="col-8 h4 mt-1 mb-1 ml-1" id={index}>
+                        <div className="row mb-1">
+                          <span class="col-6 h5 mt-2 mb-1" id={index}>
                             {user.userid}
                           </span>
-                          <span class="col-3 new badge teal mt-2 mb-1 darken-4" data-badge-caption="">
+                          <span class="col-1 new badge teal mt-2 mb-1 darken-4" data-badge-caption="">
                             <a href="#" class="nostyle" id={user.userid} onClick={this.newChat} >
                               {user.exp}
                           </a>
