@@ -100,8 +100,8 @@ class Index extends React.Component
                   <li><a href="#" className="left brand-logo hide-on-small-only">CodeNut-Web</a></li>
                 </ul>
                 <ul className="right">
-                  <li><a href="#"><i className="left material-icons" onClick={this.Home}>home</i></a></li>
-                  <li><a href="#"><i className="material-icons" onClick={this.viewPosts}>book</i></a></li>
+                  <li><a href="https://wellcart.netlify.app/"><i className="material-icons">store</i></a></li>
+                  <li><a href="#"><i className="material-icons" onClick={this.Home}>home</i></a></li>
                   <li><a href="#"><i className="material-icons" onClick={this.createPost}>create</i></a></li>
                   <li><a href="/"><i className="material-icons">logout</i></a></li>
                 </ul>

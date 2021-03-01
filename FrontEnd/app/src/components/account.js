@@ -100,11 +100,11 @@ class Accounts extends React.Component
             <ul className="left ">
               <li><a href="#" className="left brand-logo hide-on-small-only">CodeNut-Web</a></li>
               <li><a href="#" className="left hide-on-med-and-up">CodeNut</a></li>
-              <li><a href="/index"><i className="right material-icons hide-on-med-and-up">store</i></a></li>
+              <li><a href="https://wellcart.netlify.app/"><i className="right material-icons hide-on-med-and-up">store</i></a></li>
               <li><a href="/index"><i className="left material-icons hide-on-med-and-up">home</i></a></li>
             </ul>
             <ul className="right">
-              <li><a href="/index"><i className="left material-icons">store</i></a></li>
+              <li><a href="https://wellcart.netlify.app/"><i className="left material-icons">store</i></a></li>
               <li><a href="/index"><i className="left material-icons">home</i></a></li>
             </ul>
           </div>
