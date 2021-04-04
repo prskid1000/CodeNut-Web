@@ -93,7 +93,7 @@ class Index extends React.Component
 
     render() {
         return (
-          <div className="container">
+          <div>
             <nav className="grey darken-4 mb-3">
               <div className="nav-wrapper m-5 ">
                 <ul className="left ">
