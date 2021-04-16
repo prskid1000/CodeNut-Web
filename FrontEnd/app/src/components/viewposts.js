@@ -108,7 +108,7 @@ class viewPosts extends React.Component
                             </span>
 
                             <span class="col new badge teal darken-4 m-3" data-badge-caption="" id={index}>
-                              {post.votes}
+                              <b>Votes: &nbsp;</b>{post.votes}
                             </span>
                           </row>
 

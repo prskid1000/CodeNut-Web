@@ -387,10 +387,10 @@ class postView extends React.Component
 
                       <row className="row col hide-on-small-only">
                         <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
-                          {this.state.author}
+                          <b>Author: &nbsp;</b>{this.state.author}
                         </span>
                         <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
-                          {this.state.votes}
+                          <b>Votes: &nbsp;</b>{this.state.votes}
                         </span>
                         <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.upVotePost}>Up
                         </span>
@@ -400,10 +400,10 @@ class postView extends React.Component
 
                       <row className="row hide-on-med-and-up">
                         <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
-                          {this.state.author}
+                          <b>Author: &nbsp;</b>{this.state.author}
                         </span>
                         <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
-                          {this.state.votes}
+                          <b>Votes: &nbsp;</b>{this.state.votes}
                         </span>
                       </row>
 
@@ -455,10 +455,10 @@ class postView extends React.Component
                       <div className="card col-sm-12">
                         <row className="row col hide-on-small-only">
                           <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
-                            {this.state.comments[index].author}
+                            <b>Author: &nbsp;</b>{this.state.comments[index].author}
                           </span>
                           <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
-                            {this.state.comments[index].votes}
+                            <b>Votes: &nbsp;</b>{this.state.comments[index].votes}
                           </span>
                           <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.upVoteComment} id={index}>Up
                         </span>
@@ -468,10 +468,10 @@ class postView extends React.Component
 
                         <row className="row hide-on-med-and-up">
                           <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
-                            {this.state.comments[index].author}
+                            <b>Author: &nbsp;</b>{this.state.comments[index].author}
                           </span>
                           <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
-                            {this.state.comments[index].votes}
+                            <b>Votes: &nbsp;</b>{this.state.comments[index].votes}
                           </span>
                         </row>
 
