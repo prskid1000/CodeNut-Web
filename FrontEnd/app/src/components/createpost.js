@@ -116,7 +116,7 @@ class createPost extends React.Component {
                       <div class="input-group-prepend">
                         <span class="material-icons">question_answer</span>
                       </div>
-                      <input type="password" class="form-control" placeholder="Description" title={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></input>
+                      <input type="text" class="form-control" placeholder="Description" title={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></input>
                     </div>
                     <div class="row">
                       <input type="button" value="Create" class="col btn float-right login_btn grey darken-4 white-text" onClick={this.saveChange} id="Create"></input>
