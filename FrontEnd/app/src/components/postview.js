@@ -435,7 +435,7 @@ class postView extends React.Component
 
                       <div className="m-3">
                         <div className="row">
-                          <textarea class="materialize-textarea col-sm-7 m-1" value="" ></textarea>
+                          <textarea class="materialize-textarea col-sm-7 m-1" value={this.state.mycomment} onChange={this.handleChangeC} ></textarea>
                           <Button className="btn teal darken-4 col-sm-4 m-1" onClick={this.addComment} id="Add Comment">Add Comment</Button>
                         </div>
                       </div>
