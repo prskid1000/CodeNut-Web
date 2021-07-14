@@ -171,7 +171,7 @@ class Index extends React.Component
                               <div class="input-group-prepend">
                                 <span class="material-icons">question_answer</span>
                               </div>
-                              <input type="password" class="form-control" placeholder={post.desciption} disabled></input>
+                              <input type="text" class="form-control" placeholder={post.desciption} disabled></input>
                             </div>
                             <div className="row">
                               <Button className="btn teal darken-4 col-sm m-1 mr-3" value={JSON.stringify(post)} onClick={this.fullView} id="Full View">Full View</Button>
