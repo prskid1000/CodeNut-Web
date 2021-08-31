@@ -89,18 +89,17 @@ class viewPosts extends React.Component
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <br></br>
 
             <div className="row">
-              <div className="col-sm p-1">
-                <div class="jumbotron">
+              <div className="col">
+                <div>
                   <center><h2>Posts</h2></center>
                   <center>
                     {this.state.posts.map((post, index) => (
 
-                      <div className="row col-11 mt-2 pb-3" id={index}>
+                      <div className="row mt-2 pb-3" id={index}>
 
-                        <div className="card col-sm-12">
+                        <div className="card col-12">
 
                           <row className="row col">
                             <span class="col new badge teal darken-4 m-3" data-badge-caption="" id={index}>

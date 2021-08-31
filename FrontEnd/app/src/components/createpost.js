@@ -98,8 +98,8 @@ class createPost extends React.Component {
         <br></br>
         
         <div className="row">
-          <div className="col-sm">
-            <div class="jumbotron">
+          <div className="col">
+            <div>
               <div class="card">
                 <div class="card-header">
                   <h3>New</h3>

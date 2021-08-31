@@ -114,12 +114,11 @@ class Index extends React.Component
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <br></br>
 
             <div className="row">
 
-              <div className="jumbotron col-sm-3 hide-on-med-and-up">
-                <div class="jumbotron">
+              <div className="col-12 hide-on-med-and-up">
+                <div>
                   <center><h2>Users</h2></center>
                   <center >
                     {this.state.contributors.map((user, index) => (
@@ -140,15 +139,13 @@ class Index extends React.Component
                 </div>
               </div>
 
-              <div className="col-sm-9 p-1">
-                <div class="jumbotron">
+              <div className="col-12 col-md-9">
+                <div>
                   <center><h2>Posts</h2></center>
                   <center>
                     {this.state.posts.map((post, index) => (
-
-                      <div className="row col-11 mt-2 pb-3" id={index}>
-
-                        <div className="card col-sm-12">
+                      <div className="row mt-2 pb-3" id={index}>
+                        <div className="card col-12">
 
                           <row className="row col">
                             <span class="col new badge teal darken-4 m-3" data-badge-caption="" id={index}>
@@ -189,14 +186,14 @@ class Index extends React.Component
                 </div>
               </div>
 
-              <div className="jumbotron col-sm-3 hide-on-small-only">
-                <div class="jumbotron p-1">
+              <div className="col-3 hide-on-small-only">
+                <div class="p-1">
                   <center><h2>Users</h2></center>
                   <center >
                     {this.state.contributors.map((user, index) => (
                       <div className="card col">
                         <div className="row mb-1">
-                          <span class="col-6 h5 mt-2 mb-1" id={index}>
+                          <span class="col-9 h5 mt-2 mb-1" id={index}>
                             {user.userid}
                           </span>
                           <span class="col-1 new badge teal mt-2 mb-1 darken-4" data-badge-caption="">

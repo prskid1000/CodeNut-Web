@@ -380,9 +380,9 @@ class postView extends React.Component
             <br></br>
 
             <div className="row">
-              <div className="jumbotron col-sm p-1">
-                <div class="jumbotron">
-                  <div className="row col-11">
+              <div className="col">
+                <div>
+                  <div className="row">
                     <div className="card col-sm-12">
 
                       <row className="row col hide-on-small-only">
@@ -447,12 +447,12 @@ class postView extends React.Component
             </div>
 
             <div className="row">
-              <div className="jumbotron col-sm p-1">
+              <div className="col">
                 <center><h2>All Comments</h2></center>
-                <div class="jumbotron">
-                  <div className="row col-11 pb-3">
+                <div>
+                  <div className="row mt-2 pb-3">
                     {this.state.comments.map((comment, index) => (
-                      <div className="card col-sm-12">
+                      <div className="card col-12">
                         <row className="row col hide-on-small-only">
                           <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
                             <b>Author: &nbsp;</b>{this.state.comments[index].author}
