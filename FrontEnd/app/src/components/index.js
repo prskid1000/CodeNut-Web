@@ -1,9 +1,6 @@
 /* eslint-disable */
 import React from "react";
-import { Button } from "react-bootstrap";
-import '../style/main.css';
 import axios from "axios";
-
 
 class Index extends React.Component
 {

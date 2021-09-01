@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React from "react";
-import '../style/main.css';
 import axios from "axios";
 
 class Accounts extends React.Component
