@@ -69,6 +69,7 @@ class postView extends React.Component
 
   upVoteComment(event){
     var id = event.target.id;
+    console.log(event.target)
     if (this.state.user != this.state.comments[id].author) {
       const data = {
         userid: this.state.user,
@@ -99,6 +100,7 @@ class postView extends React.Component
 
   downVoteComment(event){
     var id = event.target.id;
+    console.log(event.target)
     if (this.state.user != this.state.comments[id].author) {
       const data = {
         userid: this.state.user,
@@ -354,155 +356,131 @@ class postView extends React.Component
 
     render() {
         return (
-          <div>
-            <nav className="grey darken-4 mb-3">
-              <div className="nav-wrapper m-5 ">
-                <ul className="left ">
-                  <li><a href="#" className="left brand-logo hide-on-small-only">CodeNut-Web</a></li>
-                </ul>
-                <ul className="right">
-                  <li><a href="https://wellcart.netlify.app/"><i className="material-icons">store</i></a></li>
-                  <li><a href="#"><i className="material-icons" onClick={this.Home}>home</i></a></li>
-                  <li><a href="#"><i className="material-icons" onClick={this.viewPosts}>book</i></a></li>
-                  <li><a href="/"><i className="material-icons">logout</i></a></li>
+          <div className="bg">
+            <nav className="navbar fixed-top navbar-expand-md bg">
+              <div className="title">IChat</div>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <i className="text-white fas fa-bars"></i>
+              </button>
+
+              <div className="collapse navbar-collapse subbg2" id="collapsibleNavbar">
+                <ul className="nav navbar-nav ml-auto navbar-right">
+                  <li className="nav-item pl-3">
+                    <button className="btn navbar-dark clickable f24 text-white" onClick={this.Home}>Home</button>
+                  </li>
+                  <li className="nav-item pl-3">
+                    <button className="btn navbar-dark clickable f24 text-white" onClick={this.viewPosts}>All Posts</button>
+                  </li>
+                  <li className="nav-item pl-3">
+                    <button className="btn navbar-dark clickable f24 text-white" onClick={this.createPost}>Create</button>
+                  </li>
+                  <li className="nav-item pl-3">
+                    <a className="btn navbar-dark text-white clickable" href="/"><i className="fas fa-sign-out-alt f24"></i><br></br>Logout</a>
+                  </li>
                 </ul>
               </div>
             </nav>
 
-            <div className="alert white-text grey darken-1 alert-dismissible fade show" role="alert">
-              <strong>{this.state.alert}</strong>
-              <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <br></br>
+            <div className="mt-5 p-4 bg">
+              <ul className="nav pt-3 nav-pills ml-3">
+                <li className="nav-item"><a className="nav-link active btn btn-dark bgt" data-toggle="pill" href="#message" role="tab">Post</a></li>
+                <li className="nav-item"><a className="nav-link btn btn-dark bgt" data-toggle="pill" href="#contact" role="tab">Comments</a></li>
+              </ul>
 
-            <div className="row">
-              <div className="col">
-                <div>
-                  <div className="row">
-                    <div className="card col-sm-12">
+              <div className="tab-content">
 
-                      <row className="row col hide-on-small-only">
-                        <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
-                          <b>Author: &nbsp;</b>{this.state.author}
-                        </span>
-                        <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
-                          <b>Votes: &nbsp;</b>{this.state.votes}
-                        </span>
-                        <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.upVotePost}>Up
-                        </span>
-                        <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.downVotePost}>Down
-                        </span>
-                      </row>
-
-                      <row className="row hide-on-med-and-up">
-                        <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
-                          <b>Author: &nbsp;</b>{this.state.author}
-                        </span>
-                        <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
-                          <b>Votes: &nbsp;</b>{this.state.votes}
-                        </span>
-                      </row>
-
-                      <row className="row hide-on-med-and-up">                    
-                        <span class="col new badge grey darken-4 white-text clickable" data-badge-caption="" onClick={this.upVotePost}>Up
-                        </span>
-                        <span class="col new badge grey darken-4 white-text clickable" data-badge-caption="" onClick={this.downVotePost}>Down
-                        </span>
-                      </row>
-
-                      <div className="card-body mt-3">
-                        <div class="input-group form-group">
-                          <div class="input-group-prepend">
-                            <span class="material-icons">question_answer</span>
+                <div id="message" className="tab-pane active" role="tabpanel">
+                  <div className="mg">
+                    <div className="row bgt p-4">
+                      <div className="col-12 col-md-6 bgt p-4">
+          
+                          <div className="h5 mt-2 mb-5">
+                            <b>{this.state.author}</b>
+                            <div className="float-right ">
+                              <a className="btn bgt btn-dark bgt">{this.state.votes}</a>
+                              <a className="btn bgt btn-dark clickable p-2" onClick={this.upVote}><i className="fas fa-thumbs-up"></i></a>
+                              <a className="btn bgt btn-dark clickable p-2" onClick={this.downVote}><i className="fas fa-thumbs-down"></i></a>
+                            </div>
                           </div>
-                          <input type="text" class="form-control" name={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></input>
-                        </div>
-                        <div class="input-group form-group">
-                          <div class="input-group-prepend">
-                            <span class="material-icons">question_answer</span>
-                          </div>
-                          <input type="text" class="form-control" name={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></input>
-                        </div>
-                        <div className="row">
-                          <Button className="btn teal darken-4 col-sm m-1" onClick={this.saveChange} id="Save Change">Save Changes</Button>
-                          <Button className="btn teal darken-4 col-sm m-1" onClick={this.deletePost} id="Delete Post">Delete Post</Button>
+
+                          {this.state.author == this.state.user && <>
+                            <label>Question</label>
+                            <textarea type="text" className="form-control" name={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></textarea><br></br>
+                            <label>Description</label>
+                            <textarea type="text" className="form-control" name={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></textarea><br></br>
+                            <div className="row">
+                              <input type="button" value="Create" className="btn h5 btn-dark col-11 col-md-5 ml-3 m-2" onClick={this.saveChange} id="Save"></input>
+                              <input type="button" value="Delete" className="btn h5 btn-dark col-11 col-md-5 ml-3 m-2" onClick={this.deletePost} id="Delete Post"></input>
+                            </div>
+                        </>}
+                        <div className="row mt-5">
+                          <textarea type="text" class="form-control ml-3 col-11 col-md-6" value={this.state.mycomment} onChange={this.handleChangeC} ></textarea>
+                          <button className="btn h5 btn-dark col-11 ml-3 col-md-4 ml-3 m-2" onClick={this.addComment} id="Add Comment">Comment</button>
                         </div>
                       </div>
-
-                      <div className="m-3">
-                        <div className="row">
-                          <textarea class="materialize-textarea col-sm-7 m-1" value={this.state.mycomment} onChange={this.handleChangeC} ></textarea>
-                          <Button className="btn teal darken-4 col-sm-4 m-1" onClick={this.addComment} id="Add Comment">Add Comment</Button>
-                        </div>
-                      </div>
-
                     </div>
                   </div>
                 </div>
-              </div>  
-            </div>
 
-            <div className="row">
-              <div className="col">
-                <center><h2>All Comments</h2></center>
-                <div>
-                  <div className="row mt-2 pb-3">
-                    {this.state.comments.map((comment, index) => (
-                      <div className="card col-12">
-                        <row className="row col hide-on-small-only">
-                          <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
-                            <b>Author: &nbsp;</b>{this.state.comments[index].author}
-                          </span>
-                          <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
-                            <b>Votes: &nbsp;</b>{this.state.comments[index].votes}
-                          </span>
-                          <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.upVoteComment} id={index}>Up
-                        </span>
-                          <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.downVoteComment} id={index}>Down
-                        </span>
-                        </row>
-
-                        <row className="row hide-on-med-and-up">
-                          <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
-                            <b>Author: &nbsp;</b>{this.state.comments[index].author}
-                          </span>
-                          <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
-                            <b>Votes: &nbsp;</b>{this.state.comments[index].votes}
-                          </span>
-                        </row>
-
-                        <row className="row hide-on-med-and-up ">
-                          <span class="col new badge grey darken-4 white-text clickable" data-badge-caption="" onClick={this.upVoteComment} id={index}>Up
-                        </span>
-                          <span class="col new badge grey darken-4 white-text clickable" data-badge-caption="" onClick={this.downVoteComment} id={index}>Down
-                        </span>
-                        </row>
-
-
-                        <div class="input-group form-group mt-5">
-                          <div class="input-group-prepend">
-                            <span class="material-icons">question_answer</span>
+                <div id="contact" className="tab-pane fade" role="tabpanel">
+                  <div className="mg">
+                    <div className="row p-4">
+                      {this.state.comments.map((comment, index) => (
+                        <div className="card col-12 col-md-3 m-2">
+                          <div className="textrain h5 mt-2 mb-2" id={index}>
+                            <b>{this.state.comments[index].author}</b>
+                            <div className="float-right ">
+                              <a className="btn bgt btn-dark bgt">{this.state.comments[index].votes}</a>
+                              <a className="btn bgt btn-dark clickable p-2" onClick={this.upVoteComment} id={index}><i id={index} className="fas fa-thumbs-up"></i></a>
+                              <a className="btn bgt btn-dark clickable p-2" onClick={this.downVoteComment} id={index}><i id={index} className="fas fa-thumbs-down"></i></a>
+                            </div>
                           </div>
-                          <input type="text" class="form-control" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index}></input>
+                          {
+                            this.state.comments[index].author != this.state.user && <>
+                              <div className="row">
+                                <textarea className="col-10 bgt text-white mr-5 m-2" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index} disabled></textarea>
+                              </div>
+                            </>
+                          }
+                          {
+                            this.state.comments[index].author == this.state.user && <>
+                              <div className="row">
+                                <textarea className="col-10 bgt text-white mr-5 m-2" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index} ></textarea>
+                              </div>
+                              <div className="row">
+                                <button className="btn bgt btn-dark bgt col-5 m-2" onClick={this.deleteComment} id={index}>Delete</button>
+                                <button className="btn bgt btn-dark bgt col-5 m-2" onClick={this.editComment} id={index}>Save</button>
+                              </div>
+                            </>
+                            
+                          }
                         </div>
-
-                        {
-                          this.state.comments[index].author == this.state.user &&
-                          <div className="row">
-                            <Button className="btn teal darken-4 col-sm m-1 mr-3" onClick={this.deleteComment} id={index}>Delete Comment</Button>
-                            <Button className="btn teal darken-4 col-sm m-1 mr-3" onClick={this.editComment} id={index}>Edit Comment</Button>
-                          </div>
-                        }
-                    
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
+            <div className="panel-group fixed-bottom bg row pl-md-5 p-3">
+              <div className="panel col-8">
+                <div className="panel-body">
+                  <div className="ftext">Contact Us</div>
+                  <div className="ftext">Email: prskid1000@gmail.com</div>
+                  <div className="ftext">Address: IIIT-R, Jharkhand, India</div>
+                </div>
+              </div>
+              <div className="panel col-4 p-3">
+                <div className="panel-body">
+                  <div className="ftext clickable"><a className="clickable text-white" href="https://wellcart.netlify.app/" >Donate Us</a></div>
+                </div>
+              </div>
+              <div className="panel col-12">
+                <div className="d-flex ftext justify-content-center panel-body">
+                  Copyright @ 2021, CodeNut
+                </div>
+              </div>
+            </div>
           </div>
         );
     }

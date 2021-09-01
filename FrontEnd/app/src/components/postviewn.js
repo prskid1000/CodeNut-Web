@@ -442,67 +442,7 @@ class postView extends React.Component
                   </div>
                 </div>
               </div>  
-            </div>
-
-            <div className="row">
-              <div className="col">
-                <center><h2>All Comments</h2></center>
-                <div>
-                  <div className="row mt-2 pb-3">
-                    {this.state.comments.map((comment, index) => (
-                      <div className="card col-12">
-                        <row className="row col hide-on-small-only">
-                          <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
-                            <b>Author: &nbsp;</b>{this.state.comments[index].author}
-                          </span>
-                          <span class="col-4 new badge teal darken-4 m-3" data-badge-caption="">
-                            <b>Votes: &nbsp;</b>{this.state.comments[index].votes}
-                          </span>
-                          <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.upVoteComment} id={index}>Up
-                        </span>
-                          <span class="col-1 new badge grey darken-4 mt-3 mb-3 white-text clickable" data-badge-caption="" onClick={this.downVoteComment} id={index}>Down
-                        </span>
-                        </row>
-
-                        <row className="row hide-on-med-and-up">
-                          <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
-                            <b>Author: &nbsp;</b>{this.state.comments[index].author}
-                          </span>
-                          <span class="col-sm-6 new badge teal darken-4 mt-3" data-badge-caption="">
-                            <b>Votes: &nbsp;</b>{this.state.comments[index].votes}
-                          </span>
-                        </row>
-
-                        <row className="row hide-on-med-and-up ">
-                          <span class="col new badge grey darken-4 white-text clickable" data-badge-caption="" onClick={this.upVoteComment} id={index}>Up
-                        </span>
-                          <span class="col new badge grey darken-4 white-text clickable" data-badge-caption="" onClick={this.downVoteComment} id={index}>Down
-                        </span>
-                        </row>
-
-
-                        <div class="input-group form-group mt-5">
-                          <div class="input-group-prepend">
-                            <span class="material-icons">question_answer</span>
-                          </div>
-                          <input type="text" class="form-control" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index}></input>
-                        </div>
-
-                        {
-                          this.state.comments[index].author == this.state.user &&
-                          <div className="row">
-                            <Button className="btn teal darken-4 col-sm m-1 mr-3" onClick={this.deleteComment} id={index}>Delete Comment</Button>
-                            <Button className="btn teal darken-4 col-sm m-1 mr-3" onClick={this.editComment} id={index}>Edit Comment</Button>
-                          </div>
-                        }
-                    
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            
+            </div> 
           </div>
         );
     }

@@ -88,7 +88,7 @@ class Index extends React.Component
 
     render() {
         return (
-          <>
+          <div className="bg">
             <nav className="navbar fixed-top navbar-expand-md bg">
               <div className="title">IChat</div>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -112,9 +112,83 @@ class Index extends React.Component
                 </ul>
               </div>
             </nav>
+            
+            <div className="mt-5 p-4 bg">
+              <ul className="nav pt-3 nav-pills ml-3">
+                <li className="nav-item"><a className="nav-link active btn btn-dark bgt" data-toggle="pill" href="#message" role="tab">Posts</a></li>
+                <li className="nav-item"><a className="nav-link btn btn-dark bgt" data-toggle="pill" href="#contact" role="tab">Contributors</a></li>
+              </ul>
 
+              <div className="tab-content">
 
-          </>
+                <div id="message" className="tab-pane active" role="tabpanel">
+                  <div className="mg">
+                    <div className="row bgt p-4">
+                      {this.state.posts.map((post, index) => (
+                        <div className="card col-12 col-md-3 m-1">
+                          <div className="row">
+                            <div className="h5 col-10 bgt mt-3">{post.author}</div>
+                            <div className="h5 bgt mt-3 float-right">{post.votes}</div>
+                          </div>
+                          <div className="card-body">
+                            <div className="row pb-3">
+                              <span className="bgt mb-1 h5 col-10 text-white mt-2"><b>Question</b></span>
+                              <textarea className="col-10 bgt text-white mr-5 mt-1" value={post.question}disabled ></textarea>
+                            </div>
+                            <div className="row pb-3">
+                              <span className="bgt mb-1 h5 col-10 text-white mt-2"><b>Description</b></span>
+                              <textarea className="col-10 bgt text-white mr-5 mt-1" value={post.desciption} disabled ></textarea>
+                            </div>
+                            <div className="row">
+                              <button className="btn btn-dark bgt col-5 m-1 mr-3" value={JSON.stringify(post)} onClick={this.fullView} id="Full View">View</button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div id="contact" className="tab-pane fade" role="tabpanel">
+                  <div className="mg">
+                    <div className="row p-4">
+                      {this.state.contributors.map((user, index) => (
+                        <div className="card col-12 col-md-3 m-2">
+                          <div className="textrain h5 mt-2 mb-2" id={index}>
+                            <b>{user.userid}</b>
+                            <span>
+                              <a className="float-right btn btn-dark bgt" id={user.userid}>{user.exp}</a>
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="panel-group fixed-bottom bg row pl-md-5 p-3">
+              <div className="panel col-8">
+                <div className="panel-body">
+                  <div className="ftext">Contact Us</div>
+                  <div className="ftext">Email: prskid1000@gmail.com</div>
+                  <div className="ftext">Address: IIIT-R, Jharkhand, India</div>
+                </div>
+              </div>
+              <div className="panel col-4 p-3">
+                <div className="panel-body">
+                  <div className="ftext clickable"><a className="clickable text-white" href="https://wellcart.netlify.app/" >Donate Us</a></div>
+                </div>
+              </div>
+              <div className="panel col-12">
+                <div className="d-flex ftext justify-content-center panel-body">
+                  Copyright @ 2021, CodeNut
+                </div>
+              </div>
+            </div>
+
+          </div>
         );
     }
 }

@@ -35,6 +35,7 @@ class createPost extends React.Component {
         console.log(res.data);
         if (res.data.success === "True") {
           this.setState({ 'alert': "Post Created Successfully" });
+          this.props.history.push("/viewposts");
         }
         else {
           this.setState({ 'alert': "Error in Communication" });
@@ -72,59 +73,63 @@ class createPost extends React.Component {
 
   render() {
     return (
-      <div>
-        <nav className="grey darken-4 mb-3">
-          <div className="nav-wrapper m-5 ">
-            <ul className="left ">
-              <li><a href="#" className="left brand-logo hide-on-small-only">CodeNut-Web</a></li>
-            </ul>
-            <ul className="right">
-              <li><a href="https://wellcart.netlify.app/"><i className="material-icons">store</i></a></li>
-              <li><a href="#"><i className="material-icons" onClick={this.Home}>home</i></a></li>
-              <li><a href="#"><i className="material-icons" onClick={this.viewPosts}>book</i></a></li>
-              <li><a href="/"><i className="material-icons">logout</i></a></li>
+      <div className="bg">
+        <nav className="navbar fixed-top navbar-expand-md bg">
+          <div className="title">IChat</div>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <i className="text-white fas fa-bars"></i>
+          </button>
+
+          <div className="collapse navbar-collapse subbg2" id="collapsibleNavbar">
+            <ul className="nav navbar-nav ml-auto navbar-right">
+              <li className="nav-item pl-3">
+                <button className="btn navbar-dark clickable f24 text-white" onClick={this.Home}>Home</button>
+              </li>
+              <li className="nav-item pl-3">
+                <button className="btn navbar-dark clickable f24 text-white" onClick={this.viewPosts}>All Posts</button>
+              </li>
+              <li className="nav-item pl-3">
+                <button className="btn navbar-dark clickable f24 text-white" onClick={this.createPost}>Create</button>
+              </li>
+              <li className="nav-item pl-3">
+                <a className="btn navbar-dark text-white clickable" href="/"><i className="fas fa-sign-out-alt f24"></i><br></br>Logout</a>
+              </li>
             </ul>
           </div>
         </nav>
         
-        <div className="alert white-text grey darken-1 alert-dismissible fade show" role="alert">
-          <strong>{this.state.alert}</strong>
-          <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div className="mt-5 p-4 bg">
+          <div className="mg">
+            <div className="col-12 col-md-6 bgt p-4">
+              <label>Question</label>
+              <textarea type="text" className="form-control"  title={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></textarea><br></br>
+              <label>Description</label>
+              <textarea type="text" className="form-control"  title={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></textarea><br></br>
+              <input type="button" value="Create" className="btn h5 btn-dark col mt-2" onClick={this.saveChange} id="Create"></input>
+            </div>
+         </div>
         </div>
-        <br></br>
-        
-        <div className="row">
-          <div className="col">
-            <div>
-              <div class="card">
-                <div class="card-header">
-                  <h3>New</h3>
-                </div>
-                <div class="card-body">
-                  <form>
-                    <div class="input-group form-group">
-                      <div class="input-group-prepend">
-                        <span class="material-icons">question_answer</span>
-                      </div>
-                      <input type="text" class="form-control" placeholder="Question" title={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></input>
-                    </div>
-                    <div class="input-group form-group">
-                      <div class="input-group-prepend">
-                        <span class="material-icons">question_answer</span>
-                      </div>
-                      <input type="text" class="form-control" placeholder="Description" title={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></input>
-                    </div>
-                    <div class="row">
-                      <input type="button" value="Create" class="col btn float-right login_btn grey darken-4 white-text" onClick={this.saveChange} id="Create"></input>
-                    </div>
-                  </form>
-                </div>
-              </div>
+
+        <div className="panel-group fixed-bottom bg row pl-md-5 p-3">
+          <div className="panel col-8">
+            <div className="panel-body">
+              <div className="ftext">Contact Us</div>
+              <div className="ftext">Email: prskid1000@gmail.com</div>
+              <div className="ftext">Address: IIIT-R, Jharkhand, India</div>
+            </div>
+          </div>
+          <div className="panel col-4 p-3">
+            <div className="panel-body">
+              <div className="ftext clickable"><a className="clickable text-white" href="https://wellcart.netlify.app/" >Donate Us</a></div>
+            </div>
+          </div>
+          <div className="panel col-12">
+            <div className="d-flex ftext justify-content-center panel-body">
+              Copyright @ 2021, CodeNut
             </div>
           </div>
         </div>
+
       </div>
     );
   }

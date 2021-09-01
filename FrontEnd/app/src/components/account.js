@@ -92,7 +92,7 @@ class Accounts extends React.Component
 
   render() {
     return (
-      <>
+      <div className="bg">
         <nav className="navbar fixed-top navbar-expand-md bg">
           <div className="title">CodeNut</div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -107,6 +107,7 @@ class Accounts extends React.Component
             </ul>
           </div>
         </nav>
+
         <div className="mt-5 p-4 bg">
           <ul className="nav nav-pills ml-3">
             <li className="nav-item"><a className="nav-link active btn btn-dark bgt" data-toggle="pill" href="#login" role="tab">Login</a></li>
@@ -161,7 +162,7 @@ class Accounts extends React.Component
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
