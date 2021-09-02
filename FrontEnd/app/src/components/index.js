@@ -90,7 +90,7 @@ class Index extends React.Component
         return (
           <div className="bg">
             <nav className="navbar fixed-top navbar-expand-md bg">
-              <div className="title">IChat</div>
+              <div className="title">CodeNut</div>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <i className="text-white fas fa-bars"></i>
               </button>
@@ -133,11 +133,11 @@ class Index extends React.Component
                           <div className="card-body">
                             <div className="row pb-3">
                               <span className="bgt mb-1 h5 col-10 text-white mt-2"><b>Question</b></span>
-                              <textarea className="col-10 bgt text-white mr-5 mt-1" value={post.question}disabled ></textarea>
+                              <textarea rows="5" className="col-10 bgt text-white mr-5 mt-1" value={post.question}disabled ></textarea>
                             </div>
                             <div className="row pb-3">
-                              <span className="bgt mb-1 h5 col-10 text-white mt-2"><b>Description</b></span>
-                              <textarea className="col-10 bgt text-white mr-5 mt-1" value={post.desciption} disabled ></textarea>
+                              <span className="bgt mb-1 h5 col-10 text-white mt-2"><b>Answer</b></span>
+                              <textarea rows="5" className="col-10 bgt text-white mr-5 mt-1" value={post.desciption} disabled ></textarea>
                             </div>
                             <div className="row">
                               <button className="btn btn-dark bgt col-5 m-1 mr-3" value={JSON.stringify(post)} onClick={this.fullView} id="Full View">View</button>

@@ -75,7 +75,7 @@ class createPost extends React.Component {
     return (
       <div className="bg">
         <nav className="navbar fixed-top navbar-expand-md bg">
-          <div className="title">IChat</div>
+          <div className="title">CodeNut</div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <i className="text-white fas fa-bars"></i>
           </button>
@@ -102,9 +102,9 @@ class createPost extends React.Component {
           <div className="mg">
             <div className="col-12 col-md-6 bgt p-4">
               <label>Question</label>
-              <textarea type="text" className="form-control"  title={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></textarea><br></br>
-              <label>Description</label>
-              <textarea type="text" className="form-control"  title={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></textarea><br></br>
+              <textarea rows="10" type="text" className="form-control"  title={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></textarea><br></br>
+              <label>Answer</label>
+              <textarea rows="10" type="text" className="form-control"  title={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></textarea><br></br>
               <input type="button" value="Create" className="btn h5 btn-dark col mt-2" onClick={this.saveChange} id="Create"></input>
             </div>
          </div>

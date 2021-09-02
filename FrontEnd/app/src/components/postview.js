@@ -358,7 +358,7 @@ class postView extends React.Component
         return (
           <div className="bg">
             <nav className="navbar fixed-top navbar-expand-md bg">
-              <div className="title">IChat</div>
+              <div className="title">CodeNut</div>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <i className="text-white fas fa-bars"></i>
               </button>
@@ -392,30 +392,37 @@ class postView extends React.Component
                 <div id="message" className="tab-pane active" role="tabpanel">
                   <div className="mg">
                     <div className="row bgt p-4">
-                      <div className="col-12 col-md-6 bgt p-4">
+                      <div className="col-12 col-md-10 bgt p-4">
           
                           <div className="h5 mt-2 mb-5">
                             <b>{this.state.author}</b>
                             <div className="float-right ">
-                              <a className="btn bgt btn-dark bgt">{this.state.votes}</a>
-                              <a className="btn bgt btn-dark clickable p-2" onClick={this.upVote}><i className="fas fa-thumbs-up"></i></a>
-                              <a className="btn bgt btn-dark clickable p-2" onClick={this.downVote}><i className="fas fa-thumbs-down"></i></a>
+                              <a className="btn bgt btn-dark bgt p-2">{this.state.votes}</a>
+                              <a className="btn bgt btn-dark clickable p-2" onClick={this.upVotePost}><i className="fas fa-thumbs-up"></i></a>
+                              <a className="btn bgt btn-dark clickable p-2" onClick={this.downVotePost}><i className="fas fa-thumbs-down"></i></a>
                             </div>
                           </div>
 
+                          {this.state.author != this.state.user && <>
+                            <label>Question</label>
+                            <textarea rows="10" type="text" className="form-control" name={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question" disabled></textarea><br></br>
+                            <label>Answer</label>
+                            <textarea rows="10" type="text" className="form-control" name={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description" disabled></textarea><br></br>
+                        </>}
+
                           {this.state.author == this.state.user && <>
                             <label>Question</label>
-                            <textarea type="text" className="form-control" name={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></textarea><br></br>
-                            <label>Description</label>
-                            <textarea type="text" className="form-control" name={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></textarea><br></br>
+                            <textarea rows="10" type="text" className="form-control" name={JSON.stringify(this.state)} value={this.state.question} onChange={this.handleChange} id="question"></textarea><br></br>
+                            <label>Answer</label>
+                            <textarea rows="10" type="text" className="form-control" name={JSON.stringify(this.state)} value={this.state.description} onChange={this.handleChange} id="description"></textarea><br></br>
                             <div className="row">
                               <input type="button" value="Create" className="btn h5 btn-dark col-11 col-md-5 ml-3 m-2" onClick={this.saveChange} id="Save"></input>
                               <input type="button" value="Delete" className="btn h5 btn-dark col-11 col-md-5 ml-3 m-2" onClick={this.deletePost} id="Delete Post"></input>
                             </div>
                         </>}
                         <div className="row mt-5">
-                          <textarea type="text" class="form-control ml-3 col-11 col-md-6" value={this.state.mycomment} onChange={this.handleChangeC} ></textarea>
-                          <button className="btn h5 btn-dark col-11 ml-3 col-md-4 ml-3 m-2" onClick={this.addComment} id="Add Comment">Comment</button>
+                          <textarea rows="5" type="text" class="form-control ml-3 col-11 col-md-8" value={this.state.mycomment} onChange={this.handleChangeC} ></textarea>
+                          <button className="btn h5 btn-dark col-11 ml-3 mt-md-5 col-md-2 ml-3 m-2" onClick={this.addComment} id="Add Comment">Comment</button>
                         </div>
                       </div>
                     </div>
@@ -430,7 +437,7 @@ class postView extends React.Component
                           <div className="textrain h5 mt-2 mb-2" id={index}>
                             <b>{this.state.comments[index].author}</b>
                             <div className="float-right ">
-                              <a className="btn bgt btn-dark bgt">{this.state.comments[index].votes}</a>
+                              <a className="btn bgt btn-dark bgt p-2">{this.state.comments[index].votes}</a>
                               <a className="btn bgt btn-dark clickable p-2" onClick={this.upVoteComment} id={index}><i id={index} className="fas fa-thumbs-up"></i></a>
                               <a className="btn bgt btn-dark clickable p-2" onClick={this.downVoteComment} id={index}><i id={index} className="fas fa-thumbs-down"></i></a>
                             </div>
@@ -438,14 +445,14 @@ class postView extends React.Component
                           {
                             this.state.comments[index].author != this.state.user && <>
                               <div className="row">
-                                <textarea className="col-10 bgt text-white mr-5 m-2" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index} disabled></textarea>
+                                <textarea rows="5" className="col-10 bgt text-white mr-5 m-2" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index} disabled></textarea>
                               </div>
                             </>
                           }
                           {
                             this.state.comments[index].author == this.state.user && <>
                               <div className="row">
-                                <textarea className="col-10 bgt text-white mr-5 m-2" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index} ></textarea>
+                                <textarea rows="5" className="col-10 bgt text-white mr-5 m-2" name={JSON.stringify(this.state)} value={this.state.comments[index].comment} onChange={this.handleComment} id={index} ></textarea>
                               </div>
                               <div className="row">
                                 <button className="btn bgt btn-dark bgt col-5 m-2" onClick={this.deleteComment} id={index}>Delete</button>
